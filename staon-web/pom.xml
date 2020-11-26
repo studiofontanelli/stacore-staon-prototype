@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>it.csi.stacore</groupId>
+		<artifactId>staon</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>staon-web</artifactId>
+	<packaging>war</packaging>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven.war.plugin.version}</version>
+				<configuration>
+					<!-- Exclude JCL and LOG4J since all logging should go through SLF4J.
+						Note that we're excluding log4j-<version>.jar but keeping log4j-over-slf4j-<version>.jar -->
+					<packagingExcludes>
+						WEB-INF/lib/commons-logging-*.jar,
+						WEB-INF/lib/servlet-api-*.jar,
+						%regex[WEB-INF/lib/log4j-(?!over-slf4j).*.jar]
+					</packagingExcludes>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/web.xml</include>
+								<!--<include>*.css</include>
+								<include>*.html</include>
+								<include>*.js</include>
+								<include>*.png</include>-->
+							</includes>
+						</resource>
+					</webResources>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

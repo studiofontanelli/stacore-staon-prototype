@@ -1,0 +1,131 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.csi.stacore</groupId>
+	<artifactId>staon</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<organization>
+		<name>CSI PIEMONTE</name>
+		<url>http://www.csi.it</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<organization>Engineering Ingegneria Informatica S.p.a.</organization>
+			<email>andrea.fontanelli@eng.it</email>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>UTF8</encoding>
+				</configuration>
+			</plugin>
+
+
+
+		</plugins>
+
+	</build>
+
+	<!-- GLOBAL PROPERTIES -->
+	<properties>
+
+		<!-- Project settings -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<basedir>.</basedir>
+		<project.name>staon</project.name>
+		<context.name>staon</context.name>
+		<ear.name>staon</ear.name>
+		<ear.version>1.0.0</ear.version>
+		<spring.property.file.name>staon.properties</spring.property.file.name>
+
+		<!-- Java Settings -->
+		<java.version>1.8</java.version>
+
+
+		<!-- Maven plugins -->
+		<maven.ear.plugin.version>3.0.1</maven.ear.plugin.version>
+		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
+		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<maven.assembly.plugin.version>3.1.1</maven.assembly.plugin.version>
+		<maven.antrun.plugin.version>1.8</maven.antrun.plugin.version>
+
+	</properties>
+
+	<modules>
+		<module>staon-dto</module>
+		<module>staon-util</module>
+		<module>staon-integration</module>
+		<module>staon-business</module>
+		<module>staon-web</module>
+		<module>staon-ear</module>
+		<module>staon-tar</module>
+	</modules>
+
+
+
+
+	<!--
+
+	Hello Developer: add yout profile here
+
+	 -->
+
+	<profiles>
+		<profile>
+			<id>macfonta</id>
+			<properties>
+				<profile-id>macfonta</profile-id>
+				<property.file.name.source>macfonta.properties</property.file.name.source>
+			</properties>
+		</profile>
+
+
+		<profile>
+			<id>dev-rp-01</id>
+			<properties>
+				<profile-id>dev-rp-01</profile-id>
+				<property.file.name.source>dev-rp-01.properties</property.file.name.source>
+			</properties>
+		</profile>
+		<profile>
+			<id>tst-rp-01</id>
+			<properties>
+				<profile-id>tst-rp-01</profile-id>
+				<property.file.name.source>tst-rp-01.properties</property.file.name.source>
+			</properties>
+		</profile>
+		<profile>
+			<id>coll-rp-01</id>
+			<properties>
+				<profile-id>coll-rp-01</profile-id>
+				<property.file.name.source>coll-rp-01.properties</property.file.name.source>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod-rp-01</id>
+			<properties>
+				<profile-id>prod-rp-01</profile-id>
+				<property.file.name.source>prod-rp-01.properties</property.file.name.source>
+			</properties>
+		</profile>
+	</profiles>
+
+
+</project>
