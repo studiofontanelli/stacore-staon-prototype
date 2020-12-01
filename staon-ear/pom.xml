@@ -15,7 +15,7 @@
 
 		<dependency>
 			<groupId>it.csi.stacore</groupId>
-			<artifactId>staon-web</artifactId>
+			<artifactId>staon-web-pabr</artifactId>
 			<version>${ear.version}</version>
 			<type>war</type>
 		</dependency>
@@ -144,9 +144,9 @@
 						</ejbModule>
 						<webModule>
 							<groupId>it.csi.stacore</groupId>
-							<artifactId>staon-web</artifactId>
-							<contextRoot>/${context.name}</contextRoot>
-							<bundleFileName>staon-web.war</bundleFileName>
+							<artifactId>staon-web-pabr</artifactId>
+							<contextRoot>/staonpabr</contextRoot>
+							<bundleFileName>staon-web-parb.war</bundleFileName>
 						</webModule>
 					</modules>
 					<!-- <configuration> -->

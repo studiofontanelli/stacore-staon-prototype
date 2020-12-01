@@ -19,7 +19,7 @@
 		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
 			<pluggable-pd name="servizioConsultazione"
 							class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
-							url-pa="http://127.0.0.1:8080/staon/servlet/rpcrouter">
+							url-pa="http://127.0.0.1:8080/staonpabr/servlet/rpcrouter">
 				<properties>
 
 				</properties>

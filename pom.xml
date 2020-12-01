@@ -50,7 +50,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<basedir>.</basedir>
 		<project.name>staon</project.name>
-		<context.name>staon</context.name>
 		<ear.name>staon</ear.name>
 		<ear.version>1.0.0</ear.version>
 		<spring.property.file.name>staon.properties</spring.property.file.name>
@@ -92,7 +91,7 @@
 		<module>staon-csi</module>
 		<module>staon-business</module>
 		<module>staon-ejb</module>
-		<module>staon-web</module>
+		<module>staon-web-pabr</module>
 		<module>staon-ear</module>
 		<module>staon-tar</module>
 		<module>staon-tools</module>
@@ -106,7 +105,7 @@
 
 	<!--
 
-	Hello Developer: add yout profile here
+	Hello Developer: add your profile here
 
 	 -->
 
