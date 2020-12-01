@@ -1,0 +1,176 @@
+<porta-delegata name="PD_ServizioComunicazioneUtente">
+	<services>
+		<service name="ServizioComunicazioneUtente"
+			public-interface-class="it.csi.stacore.staon.interfaceCSI.ServizioComunicazioneUtenteInterface">
+			<operations>
+			
+				<operation name="isAlive" type="synch-call">
+					<param-list></param-list>
+					<ret-val type="boolean" />
+				</operation>
+
+				<operation name="testResources" type="synch-call">
+					<param-list></param-list>
+					<ret-val type="boolean" />
+				</operation>
+
+				<operation name="inserisciComunicazione" type="synch-call">
+					<param-list>
+						<param name="comunicazioneUtente" type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+						<param name="utente" type="java.lang.String" />
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+				</operation>
+
+				<operation name="getIdPratica" type="synch-call">
+					<param-list> 
+						<param name="idAvvisoScadenzaVeicolo" type="it.csi.stacore.staon.business.bo.id.avvisi.scadenza.IdAvvisoScadenzaVeicolo" />
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.id.IdPratica" />
+				</operation>
+				<operation name="modificaComunicazione" type="synch-call">
+					<param-list>
+						<param name="comunicazioneUtente" type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+						<param name="utente" type="java.lang.String" />
+					</param-list>
+					<ret-val type="void" />
+				</operation>
+				<operation name="verificaInserimentoComunicazione" type="synch-call">
+					<param-list>
+						<param name="ricercaAvvisoScadenza" type="it.csi.stacore.staon.business.bo.avvisi.scadenza.RicercaAvvisoScadenza" />
+						<param name="utente" type="java.lang.String" />
+					</param-list>
+					<ret-val type="boolean" />
+				</operation>
+				<operation name="findAvvisoScadenzaVeicoloByIdComunicazione" type="synch-call" >
+          			<param-list>
+            			<param name="idComunicazioneUtente" type="it.csi.stacore.staon.business.bo.id.IdComunicazioneUtente" />
+          			</param-list>
+          			<ret-val type="it.csi.stacore.staon.business.bo.avvisi.scadenza.AvvisoScadenzaVeicolo"/>
+        		</operation>
+        		<operation name="getIdProprietarioByIdAvvisoScadenza" type="synch-call">
+					<param-list>
+						<param name="idAvvisoScadenzaPersona" type="it.csi.stacore.staon.business.bo.id.avvisi.scadenza.IdAvvisoScadenzaPersona" />
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.id.IdProprietario" />
+				</operation>
+
+				<operation name="aggiornaStatoLavorazione" type="synch-call">
+					<param-list>
+						<param name="statoLavorazione" type="it.csi.stacore.staon.business.bo.StatoLavorazione" />
+						<param name="idStatoLavorazioneAttuale" type="long" />
+						<param name="idTipoComunicazContrib" type="long" />
+						<param name="cfUtente" type="java.lang.String" />						
+					</param-list>
+					<ret-val type="void" />
+				</operation>
+				
+				<operation name="getStoricoVariazioniByIdCom" type="synch-call">
+					<param-list>
+						<param name="idComunicazioneUtente" type="it.csi.stacore.staon.business.bo.id.IdComunicazioneUtente" />											
+					</param-list>
+					<ret-val type="java.util.List" />
+				</operation>
+				<operation name="setDataInvioNotifica" type="synch-call">
+					<param-list>
+						<param name="comunicazioneUtente" type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+						<param name="utente" type="java.lang.String" />
+					</param-list>
+					<ret-val type="void" />
+				</operation>
+				<operation name="modificaNoteComunicazione" type="synch-call">
+					<param-list>
+						<param name="comunicazioneUtente" type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+						<param name="utente" type="java.lang.String" />
+					</param-list>
+					<ret-val type="void" />
+				</operation>
+				<operation name="ricercaComunicazione" type="synch-call">
+					<param-list>
+						<param name="identificativoProtocollazione" type="java.lang.String" />
+						<param name="idTipoComunicazContrib" type="java.lang.Integer" />
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+				</operation>
+				<operation name="ricercaComunicazioneByAvvisoScadenza" type="synch-call">
+					<param-list>
+						<param name="ricercaAvvisoScadenza" type="it.csi.stacore.staon.business.bo.avvisi.scadenza.RicercaAvvisoScadenza" />
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+				</operation>
+				<operation name="modificaDatiContatto" type="synch-call">
+					<param-list>
+						<param name="idComunicazioneUtente" type="it.csi.stacore.staon.business.bo.id.IdComunicazioneUtente" />
+						<param name="indirizzoEmail" type="java.lang.String" />
+						<param name="telefono" type="java.lang.String" />
+						<param name="utente" type="java.lang.String" />
+					</param-list>
+					<ret-val type="void" />
+				</operation>
+				<operation name="ricercaComunicazioneById" type="synch-call">
+					<param-list>
+						<param name="idComunicazioneUtente" type="it.csi.stacore.staon.business.bo.id.IdComunicazioneUtente" />
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+				</operation>
+
+				<operation name="findAvvisoAccertamentoByIdComunicazione" type="synch-call" >
+          			<param-list>
+            			<param name="idComunicazioneUtente" type="it.csi.stacore.staon.business.bo.id.IdComunicazioneUtente" />
+          			</param-list>
+          			<ret-val type="it.csi.stacore.staon.business.bo.avvisi.accertamento.AvvisoAccertamento"/>
+        		</operation>
+        		<operation name="eliminaComunicazioneUtente" type="synch-call" >
+          			<param-list>
+            			<param name="idComunicazioneUtente" type="it.csi.stacore.staon.business.bo.id.IdComunicazioneUtente" />            		
+          			</param-list>
+          			<ret-val type="void"/>
+        		</operation>
+        		<operation name="getNroComunicazioniAperte" type="synch-call" >
+          			<param-list>
+            			<param name="idPratica" type="it.csi.stacore.staon.business.bo.id.IdPratica" />
+            			<param name="idTipoComunicazContrib" type="it.csi.stacore.staon.business.bo.id.IdTipoComunicazContrib" />
+          			</param-list>
+          			<ret-val type="java.lang.Integer"/>
+        		</operation>
+        		
+        		
+        		<operation name="ricercaComunicazioni" type="synch-call">
+					<param-list>
+						<param name="parRicerca" type="it.csi.stacore.staon.business.bo.RicercaComunicazione" />
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.ComunicazioneUtente[]" />				
+				</operation>
+        		<operation name="ricercaComunicazioneByIdMessaggioCemi" type="synch-call">
+					<param-list>
+						<param name="idMessaggioCemi" type="java.lang.String" />
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.ComunicazioneUtente" />
+				</operation>
+				
+				<operation name="getEtichetteGrigliaComunicazioneUtenteByIdModello" type="synch-call">
+					<param-list>
+            			<param name="idModello" type="int" />
+          			</param-list>
+					<ret-val type="it.csi.stacore.staon.business.bo.DecodificaDatoGriglia[]" />
+				</operation>
+				
+			</operations>
+		</service>
+	</services>
+	<config>
+		<url-pa>multi://localhost</url-pa>
+		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
+			<pluggable-pd name="taurde"
+				class="it.csi.csi.porte.ejb20.PortaDelegataEJB" url-pa="/ejb/stacore/staon/PA_ServizioComunicazioneUtente">
+
+				<properties>	
+					<property name="java.naming.provider.url" value="jnp://tst-spjbosscp09-01.self.csi.it:19516,tst-spjbosscp09-02.self.csi.it:19516" />
+					<property name="java.naming.factory.initial" value="org.jnp.interfaces.NamingContextFactory" />
+				</properties>
+
+			</pluggable-pd>
+		</pluggable-pd-list>
+		<queue-manager />
+	</config>
+</porta-delegata>

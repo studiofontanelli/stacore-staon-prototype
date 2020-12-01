@@ -1,0 +1,35 @@
+package ${interfaceClass.package.name}.ejb;
+
+import it.csi.sipred.sipreserv.components.common.ejb.GenericBusinessComponentListenerBean;
+import it.csi.util.beanlocatorfactory.ServiceBeanLocator;
+
+import javax.ejb.CreateException;
+
+
+public class ${interfaceClass.simpleName}Bean   extends GenericBusinessComponentListenerBean    implements ${interfaceClass.name}{
+
+	private static final long serialVersionUID = 1L;
+
+    ${interfaceClass.name} helper=null;
+	
+	public void ejbCreate() throws CreateException {
+		helper=(${interfaceClass.name})
+		ServiceBeanLocator.getBeanByName("business.${interfaceClass.simpleName}");
+	}
+
+<#list interfaceClass.methods as currentMethod>
+
+	public ${currentMethod.returnType.canonicalName}  ${currentMethod.name}(
+	<#list currentMethod.parameterTypes as currentParam>
+			${currentParam.canonicalName} par${currentParam_index + 1} <#if currentParam_has_next>,<#else>)</#if>
+       </#list>
+      <#list currentMethod.exceptionTypes as currentException>
+          <#if (currentException_index == 0)> throws </#if>
+            ${currentException.canonicalName} <#if currentException_has_next>,</#if>
+      </#list> 
+    {
+        	<#if currentMethod.returnType.name!='void'>return</#if>  helper.${currentMethod.name}(<#list currentMethod.parameterTypes as currentParam>par${currentParam_index + 1} <#if currentParam_has_next>,</#if></#list>);
+	}
+  </#list>
+
+}

@@ -1,0 +1,18 @@
+package ${interfaceClass.package.name}.ejb;
+
+import it.csi.csi.wrapper.CSIException;
+import it.csi.sipred.sipreserv.integration.common.ejb.GenericAdapterRemote;
+
+import java.rmi.RemoteException;
+
+public interface  ${interfaceClass.simpleName}AdapterRemote extends GenericAdapterRemote{	
+
+<#list interfaceClass.methods as currentMethod>
+	
+    public ${currentMethod.returnType.name}  ${currentMethod.name}(
+	<#list currentMethod.parameterTypes as currentParam>
+			${currentParam.name} par${currentParam_index + 1} <#if currentParam_has_next>,</#if> </#list> ) throws CSIException,RemoteException;
+
+  </#list>
+
+}

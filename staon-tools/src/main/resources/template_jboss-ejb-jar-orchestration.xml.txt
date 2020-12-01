@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 3.2//EN" "http://www.jboss.org/j2ee/dtd/jboss_3_2.dtd">
+
+<jboss>
+	
+	<description>Esposizione Servizi Sipred ${descrizioneAmbiente} Livello orchestrazione</description>
+  
+  <enterprise-beans>
+  		<#list classlist as c>
+	  		
+	  		<session>
+	         <ejb-name>SIPRED${envUpper}_ORCH_${c.simpleName}</ejb-name>
+	         <jndi-name>sipreserv${env}/orchestration/ejb/${c.simpleName}</jndi-name>
+	      </session>
+	      
+	      <session>
+	         <ejb-name>SIPRED${envUpper}_ORCH_PA_${c.simpleName}</ejb-name>
+	         <jndi-name>sipreserv${env}/orchestration/ejb/pa_${c.simpleName}</jndi-name>
+	      </session>
+	      
+  		</#list>
+  	</enterprise-beans>
+
+   <resource-managers>
+   </resource-managers>
+      
+</jboss>
+
+
+

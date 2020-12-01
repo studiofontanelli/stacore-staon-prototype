@@ -1,0 +1,16 @@
+package it.csi.sipred.sipreserv.orchestration.${interfaceClass.simpleName?lower_case}.listener.ejb;
+
+import it.csi.csi.wrapper.CSIException;
+import it.csi.sipred.sipreserv.orchestration.common.listener.ejb.GenericSipredListenerRemote;
+
+import java.rmi.RemoteException;
+
+public interface  ${interfaceClass.simpleName}Remote extends GenericSipredListenerRemote{	
+
+<#list interfaceClass.methods as currentMethod>
+
+	public ${currentMethod.returnType.canonicalName}  ${currentMethod.name}(${currentMethod.parameterTypes[0].canonicalName} request)  throws CSIException,RemoteException;
+
+  </#list>
+
+}

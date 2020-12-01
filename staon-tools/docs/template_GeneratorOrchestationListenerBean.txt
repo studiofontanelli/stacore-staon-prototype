@@ -1,0 +1,43 @@
+package it.csi.sipred.sipreserv.orchestration.${interfaceClass.simpleName?lower_case}.listener.ejb;
+
+import javax.ejb.EJBException;
+import java.rmi.RemoteException;
+import javax.ejb.SessionContext;
+import it.csi.sipred.sipreserv.orchestration.common.BusinessMethodSignature;
+import it.csi.sipred.sipreserv.orchestration.common.listener.ejb.GenericSipredListenerBean;
+import it.csi.sipred.sipreserv.infrastructure.logging.LoggerFactory;
+import org.apache.log4j.Logger;
+import it.csi.sipred.sipreserv.util.Tracer;
+
+public class ${interfaceClass.simpleName}Bean  extends GenericSipredListenerBean  implements ${interfaceClass.name}{
+
+	private static final long serialVersionUID = 1L;
+
+	private Logger log=LoggerFactory.getLogger();
+	
+	
+<#list interfaceClass.methods as currentMethod>
+
+	public ${currentMethod.returnType.canonicalName}  ${currentMethod.name}(
+			${currentMethod.parameterTypes[0].canonicalName} request) {
+       
+      Tracer.debug(log, "${interfaceClass.name}", "${currentMethod.name}", "BEGIN");   
+       
+		${currentMethod.returnType.canonicalName} risposta=
+		(${currentMethod.returnType.canonicalName})helper.executeRequest(request, 
+			new BusinessMethodSignature(
+					"${interfaceClass.name}",
+					"${currentMethod.name}",
+					"${currentMethod.parameterTypes[0].canonicalName}",
+					"${currentMethod.returnType.canonicalName}"
+					));
+		
+       // controllo rollback
+       verificoSeDevoFareLaRollback(risposta);
+		   Tracer.debug(log, "${interfaceClass.name}", "${currentMethod.name}", "END");	
+       return risposta;			
+					
+	}
+  </#list>
+
+}

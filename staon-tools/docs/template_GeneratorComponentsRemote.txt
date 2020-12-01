@@ -1,0 +1,24 @@
+package ${interfaceClass.package.name}.ejb;
+
+import it.csi.csi.wrapper.CSIException;
+import it.csi.sipred.sipreserv.components.common.ejb.GenericBusinessComponentListenerRemote;
+
+import java.rmi.RemoteException;
+
+public interface  ${interfaceClass.simpleName}Remote extends GenericBusinessComponentListenerRemote{	
+
+<#list interfaceClass.methods as currentMethod>
+
+	
+    public ${currentMethod.returnType.canonicalName}  ${currentMethod.name}(
+	<#list currentMethod.parameterTypes as currentParam>
+			${currentParam.canonicalName} par${currentParam_index + 1} <#if currentParam_has_next>,<#else>)</#if>
+       </#list> throws 
+       <#list currentMethod.exceptionTypes as currentException>
+            ${currentException.canonicalName}, 
+      </#list>
+       RemoteException;
+
+  </#list>
+
+}

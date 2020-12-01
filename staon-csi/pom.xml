@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>it.csi.stacore</groupId>
+		<artifactId>staon</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>staon-csi</artifactId>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>staon-dto</artifactId>
+			<version>${ear.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.csi</groupId>
+			<artifactId>csi-core</artifactId>
+			<version>${csi.lib.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.csi</groupId>
+			<artifactId>csi-stadapter</artifactId>
+			<version>${csi.lib.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.csi</groupId>
+			<artifactId>csi-ejb</artifactId>
+			<version>${csi.lib.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.csi</groupId>
+			<artifactId>csi-rmi</artifactId>
+			<version>${csi.lib.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.csi</groupId>
+			<artifactId>csi-apachesoap</artifactId>
+			<version>${csi.lib.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.coopdiag</groupId>
+			<artifactId>coop-diag</artifactId>
+			<version>${coop-diag.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.util</groupId>
+			<artifactId>util-perf</artifactId>
+			<version>1.0.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		 <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springframework.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+	</dependencies>
+</project>

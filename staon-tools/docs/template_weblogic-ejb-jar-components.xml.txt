@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE weblogic-ejb-jar PUBLIC "-//BEA Systems, Inc.//DTD WebLogic 6.0.0 EJB//EN" "http://www.bea.com/servers/wls600/dtd/weblogic-ejb-jar.dtd">
+
+<weblogic-ejb-jar>
+
+	<description>Esposizione Servizi Sipred ${descrizioneAmbiente} Livello orchestrazione</description>
+	
+<#list classlist as c>
+
+	<weblogic-enterprise-bean>
+		<ejb-name>SIPRED${envUpper}_COMP_${c.simpleName}</ejb-name>
+		<stateless-session-descriptor></stateless-session-descriptor>
+		<reference-descriptor></reference-descriptor>
+		<jndi-name>sipreserv${env}/components/ejb/${c.simpleName}</jndi-name>
+	</weblogic-enterprise-bean>
+	
+	<weblogic-enterprise-bean>
+		<ejb-name>SIPRED${envUpper}_COMP_PA_${c.simpleName}</ejb-name>
+		<stateless-session-descriptor></stateless-session-descriptor>
+		<reference-descriptor></reference-descriptor>
+		<jndi-name>sipreserv${env}/components/ejb/pa_${c.simpleName}</jndi-name>
+	</weblogic-enterprise-bean>
+
+</#list>
+
+</weblogic-ejb-jar>

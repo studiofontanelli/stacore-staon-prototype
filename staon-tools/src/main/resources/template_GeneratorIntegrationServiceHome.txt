@@ -1,0 +1,7 @@
+package ${interfaceClass.package.name}.ejb;
+
+import it.csi.sipred.sipreserv.integration.common.ejb.GenericAdapterHome;
+
+public interface ${interfaceClass.simpleName}AdapterHome extends GenericAdapterHome {
+	public  ${interfaceClass.simpleName}AdapterRemote create()throws javax.ejb.CreateException,java.rmi.RemoteException;
+}

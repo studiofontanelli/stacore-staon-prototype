@@ -6,7 +6,133 @@
 
 	<display-name>staon-web</display-name>
 
+	<servlet>
+		<description>Autoinstalla i servizi soap di bridge</description>
+		<display-name>Apache-SOAP Autoinstaller (CSI)</display-name>
+		<servlet-name>autoinstaller</servlet-name>
+		<servlet-class>it.csi.csi.porte.soap.apache.AutoInstallerServlet</servlet-class>
 
+
+		<init-param>
+			<param-name>servicedef-pabrServizioConsultazione</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioConsultazione.xml</param-value>
+		</init-param>
+
+		<!--
+		<init-param>
+			<param-name>servicedef-pabrServizioBonifiche</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioBonifiche.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrInsinuazionePassivo</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioInsinuazionePassivo.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioComunicazioneUtente</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioComunicazioneUtente.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioConsultazione</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioConsultazione.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioContenzioso</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioContenzioso.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioControlli</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioControlli.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioCredito</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioCredito.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioDatiTrasversali</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioDatiTrasversali.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioElaboraEstrattoConto</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioElaboraEstrattoConto.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioFlottista</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioFlottista.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioRicercaBonificaWeb</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioRicercaBonificaWeb.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioRimborsi</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioRimborsi.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioRateizzazioni</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioRateizzazioni.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioRuoli</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioRuoli.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioSingleSignOn</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioSingleSignOn.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServizioTassaAuto</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServizioTassaAuto.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>servicedef-pabrServiziTassaAuto</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staonServiziTassaAuto.xml</param-value>
+		</init-param>
+
+		-->
+
+
+		<load-on-startup>1000</load-on-startup>
+
+	</servlet>
+
+	<servlet>
+		<description>no description</description>
+		<display-name>Apache-SOAP RPC Router</display-name>
+		<servlet-name>rpcrouter</servlet-name>
+		<servlet-class>org.apache.soap.server.http.RPCRouterServlet</servlet-class>
+		<init-param>
+			<param-name>faultListener</param-name>
+			<param-value>org.apache.soap.server.DOMFaultListener</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>autoinstaller</servlet-name>
+		<url-pattern>/servlet/autoinstaller</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>rpcrouter</servlet-name>
+		<url-pattern>/servlet/rpcrouter</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
 
 
 </web-app>

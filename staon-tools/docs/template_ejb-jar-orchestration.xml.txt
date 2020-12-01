@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar>
+
+   <description>Esposizione Servizi Sipred ${descrizioneAmbiente} Livello orchestrazione</description>
+   <display-name>ServiziSipred${descrizioneAmbiente}_Orchestration</display-name>
+
+   <enterprise-beans>
+
+<#list classlist as c>
+      <session >
+         <description>Listener elaborazioni Sipreserv</description>
+         <display-name>Listener elaborazioni Sipreserv</display-name>
+
+         <ejb-name>SIPRED${envUpper}_ORCH_${c.simpleName}</ejb-name>
+         <home>it.csi.sipred.sipreserv.orchestration.${c.simpleName?lower_case}.listener.ejb.${c.simpleName}Home</home>
+         <remote>it.csi.sipred.sipreserv.orchestration.${c.simpleName?lower_case}.listener.ejb.${c.simpleName}Remote</remote>
+         <ejb-class>it.csi.sipred.sipreserv.orchestration.${c.simpleName?lower_case}.listener.ejb.${c.simpleName}Bean</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+      </session>
+      
+       <session>
+            <ejb-name>SIPRED${envUpper}_ORCH_PA_${c.simpleName}</ejb-name>
+            <home>it.csi.csi.porte.ejb20.PortaApplicativaHome</home>
+            <remote>it.csi.csi.porte.ejb20.PortaApplicativaEJB</remote>
+            <ejb-class>it.csi.csi.porte.ejb20.PortaApplicativaBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            <env-entry>
+                <description />
+                <env-entry-name>defpa</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>/it/csi/sipred/sipreserv/orchestration/${c.simpleName?lower_case}/listener/ejb/defPA_${c.simpleName}.xml</env-entry-value>
+            </env-entry>
+        </session>
+        
+</#list>
+
+    </enterprise-beans>
+ 	<assembly-descriptor >
+<#list classlist as c >
+        <container-transaction>
+            <method>
+                <ejb-name>SIPRED${envUpper}_ORCH_PA_${c.simpleName}</ejb-name>
+                <method-name>*</method-name>
+            </method>
+	        <trans-attribute>RequiresNew</trans-attribute>
+        </container-transaction>
+        <container-transaction>
+            <method>
+                <ejb-name>SIPRED${envUpper}_ORCH_${c.simpleName}</ejb-name>
+                <method-name>*</method-name>
+            </method>
+    	      <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+  
+</#list>
+	</assembly-descriptor>
+	
+</ejb-jar>

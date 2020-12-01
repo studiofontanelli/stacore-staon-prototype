@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar>
+
+   <description>Esposizione Servizi Sipred  ${descrizioneAmbiente}  Livello componenti</description>
+   <display-name>ServiziSipred${descrizioneAmbiente}_Components</display-name>
+
+   <enterprise-beans>
+
+<#list classlist as c>
+
+      <session>
+         <description>Listener componente Edilizia privata  ${descrizioneAmbiente} </description>
+         <display-name>Listener componente Edilizia privata  ${descrizioneAmbiente} ${c.simpleName}</display-name>
+         <ejb-name>SIPRED${envUpper}_COMP_${c.simpleName}</ejb-name>
+         <home>${c.package.name}.ejb.${c.simpleName}Home</home>
+         <remote>${c.package.name}.ejb.${c.simpleName}Remote</remote>
+         <ejb-class>${c.package.name}.ejb.${c.simpleName}Bean</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+      </session>
+      
+       <session>
+            <ejb-name>SIPRED${envUpper}_COMP_PA_${c.simpleName}</ejb-name>
+            <home>it.csi.csi.porte.ejb20.PortaApplicativaHome</home>
+            <remote>it.csi.csi.porte.ejb20.PortaApplicativaEJB</remote>
+            <ejb-class>it.csi.csi.porte.ejb20.PortaApplicativaBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            <env-entry>
+                <description />
+                <env-entry-name>defpa</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>/${c.package.name?replace(".", "/")}/ejb/defPA_${c.simpleName}.xml</env-entry-value>
+            </env-entry>
+        </session>
+        
+</#list>
+
+    </enterprise-beans>
+ 	<assembly-descriptor >
+<#list classlist as c >
+
+          <container-transaction>
+            <method>
+                <ejb-name>SIPRED${envUpper}_COMP_PA_${c.simpleName}</ejb-name>
+                <method-name>*</method-name>
+            </method>
+        <trans-attribute>RequiresNew</trans-attribute>
+        </container-transaction>
+             <container-transaction>
+            <method>
+                <ejb-name>SIPRED${envUpper}_COMP_${c.simpleName}</ejb-name>
+                <method-name>*</method-name>
+            </method>
+        
+        <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+        
+  
+</#list>
+	</assembly-descriptor>
+	
+</ejb-jar>

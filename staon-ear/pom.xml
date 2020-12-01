@@ -20,5 +20,139 @@
 			<type>war</type>
 		</dependency>
 
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>staon-ejb</artifactId>
+			<version>${ear.version}</version>
+			<type>ejb</type>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/soap/soap -->
+		<dependency>
+			<groupId>soap</groupId>
+			<artifactId>soap</artifactId>
+			<version>${soap.version}</version>
+		</dependency>
+
+		<dependency>
+            <groupId>it.csi.csi</groupId>
+            <artifactId>csi-core</artifactId>
+            <version>${csi.lib.version}</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>it.csi.csi</groupId>
+            <artifactId>csi-stadapter</artifactId>
+            <version>${csi.lib.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>it.csi.csi</groupId>
+            <artifactId>csi-ejb</artifactId>
+            <version>${csi.lib.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>it.csi.csi</groupId>
+            <artifactId>csi-rmi</artifactId>
+            <version>${csi.lib.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>it.csi.csi</groupId>
+            <artifactId>csi-apachesoap</artifactId>
+            <version>${csi.lib.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>it.csi.coopdiag</groupId>
+            <artifactId>coop-diag</artifactId>
+            <version>${coop-diag.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>it.csi.util</groupId>
+            <artifactId>util-perf</artifactId>
+            <version>1.0.1</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>it.csi.csi</groupId>
+            <artifactId>csi-apachesoap</artifactId>
+            <version>${csi.lib.version}</version>
+        </dependency>
+
 	</dependencies>
+
+
+	<profiles>
+		<profile>
+			<id>macfonta</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy</id>
+								<phase>install</phase>
+								<configuration>
+									<tasks>
+										<copy file="${project.build.directory}/${ear.name}.ear"
+											tofile="${JBOSS_HOME}/standalone/deployments/${ear.name}.ear" />
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+
+	</profiles>
+
+
+	<build>
+		<plugins>
+
+			<!-- creazione ear -->
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${maven.ear.plugin.version}</version>
+				<configuration>
+					<finalName>${ear.name}</finalName>
+					<defaultLibBundleDir>/lib</defaultLibBundleDir>
+					<modules>
+						<ejbModule>
+							<groupId>it.csi.stacore</groupId>
+							<artifactId>staon-ejb</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>it.csi.stacore</groupId>
+							<artifactId>staon-web</artifactId>
+							<contextRoot>/${context.name}</contextRoot>
+							<bundleFileName>staon-web.war</bundleFileName>
+						</webModule>
+					</modules>
+					<!-- <configuration> -->
+					<!-- <packagingIncludes>META-INF/**,**/stawapp*.war</packagingIncludes> -->
+					<!-- </configuration> -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

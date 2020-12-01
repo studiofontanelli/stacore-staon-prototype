@@ -1,0 +1,39 @@
+<porta-applicativa name="SIPRED${envUpper}_COMP_PA_${interfaceClass.simpleName}" public-interface-class="${interfaceClass.name}">
+  <listener
+    class="it.csi.csi.porte.ejb20.PortaApplicativaBean"
+    listening-url="sipreserv${env}/components/ejb/pa_${interfaceClass.simpleName}"/>
+    
+  <adapter  class="it.csi.csi.wrapper.StatelessEJBAdapter">
+	   <properties>
+	     <property name="jndi-name" value="sipreserv${env}/components/ejb/${interfaceClass.simpleName}"/>
+	     <property name="home-class" value="${interfaceClass.package.name}.ejb.${interfaceClass.simpleName}Home" />
+	     <property name="remote-class" value="${interfaceClass.package.name}.ejb.${interfaceClass.simpleName}Remote" />
+	   </properties>
+  </adapter>
+
+   <options>
+    <pre-function-handler-list>
+      <pluggable-fh
+         name="PA Chiamante TXID Handler(pre)"
+         class="it.csi.cooptrace.business.handler.PaTracingHandler" >
+        <properties>
+           <property name="componentname" value="sipreserv${env}" />
+           <property name="callername" value="components/${interfaceClass.simpleName}" />
+           <property name="interfacename" value="${interfaceClass.name}" />
+       </properties>
+      </pluggable-fh>
+    </pre-function-handler-list>
+    <post-function-handler-list>
+      <pluggable-fh
+         name="PA Chiamante TXID Handler(post)"
+         class="it.csi.cooptrace.business.handler.PaTracingHandler" >
+        <properties>
+          <property name="componentname" value="sipreserv${env}" />
+          <property name="callername" value="components/${interfaceClass.simpleName}" />
+          <property name="interfacename" value="${interfaceClass.name}" />
+        </properties>
+      </pluggable-fh>
+    </post-function-handler-list>
+   </options> 
+
+</porta-applicativa>

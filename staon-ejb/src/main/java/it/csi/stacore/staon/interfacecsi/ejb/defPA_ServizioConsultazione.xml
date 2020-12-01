@@ -1,0 +1,39 @@
+<porta-applicativa name="SIPRED_COMP_PA_ServizioConsultazione" public-interface-class="ic.csi.stacore.staon.interfacecsi.ServizioConsultazione">
+  <listener
+    class="it.csi.csi.porte.ejb20.PortaApplicativaBean"
+    listening-url="sipreserv/components/ejb/pa_ServizioConsultazione"/>
+    
+  <adapter  class="it.csi.csi.wrapper.StatelessEJBAdapter">
+	   <properties>
+	     <property name="jndi-name" value="sipreserv/components/ejb/ServizioConsultazione"/>
+	     <property name="home-class" value="ic.csi.stacore.staon.interfacecsi.ejb.ServizioConsultazioneHome" />
+	     <property name="remote-class" value="ic.csi.stacore.staon.interfacecsi.ejb.ServizioConsultazioneRemote" />
+	   </properties>
+  </adapter>
+
+   <options>
+    <pre-function-handler-list>
+      <pluggable-fh
+         name="PA Chiamante TXID Handler(pre)"
+         class="it.csi.cooptrace.business.handler.PaTracingHandler" >
+        <properties>
+           <property name="componentname" value="sipreserv" />
+           <property name="callername" value="components/ServizioConsultazione" />
+           <property name="interfacename" value="ic.csi.stacore.staon.interfacecsi.ServizioConsultazione" />
+       </properties>
+      </pluggable-fh>
+    </pre-function-handler-list>
+    <post-function-handler-list>
+      <pluggable-fh
+         name="PA Chiamante TXID Handler(post)"
+         class="it.csi.cooptrace.business.handler.PaTracingHandler" >
+        <properties>
+          <property name="componentname" value="sipreserv" />
+          <property name="callername" value="components/ServizioConsultazione" />
+          <property name="interfacename" value="ic.csi.stacore.staon.interfacecsi.ServizioConsultazione" />
+        </properties>
+      </pluggable-fh>
+    </post-function-handler-list>
+   </options> 
+
+</porta-applicativa>

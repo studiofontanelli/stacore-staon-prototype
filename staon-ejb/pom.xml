@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>EJB Module</name>
+	<description>
+       Ejb tier.
+    </description>
+	<artifactId>staon-ejb</artifactId>
+	<parent>
+		<groupId>it.csi.stacore</groupId>
+		<artifactId>staon</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<packaging>ejb</packaging>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>staon-util</artifactId>
+			<version>${ear.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>staon-csi</artifactId>
+			<version>${ear.version}</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/javax.ejb/ejb-api -->
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+
+
+
+
+
+
+	</dependencies>
+
+	<build>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>${maven-ejb-plugin.version}</version>
+				<configuration>
+					<ejbVersion>${ejb.version}</ejbVersion>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+</project>

@@ -4,8 +4,14 @@
 ###### ambiente JDK 1.8+ JBOSS-EAP 6.4.0
 #########################################
 
+
+
 export JBOSS_HOME=/opt/java/jboss-eap-6.4.0
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/
+
+#export JBOSS_HOME=/opt/java/wildfly-17.0.1.Final
+#export JAVA_HOME=/opt/java/jdk-11.0.2.jdk/Contents/Home
+
 
 #export MVN_HOME=/opt/java/apache-maven-3.0.4
 export MVN_HOME=/opt/java/apache-maven-3.6.0

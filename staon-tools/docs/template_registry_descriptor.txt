@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deploy-descriptor	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../conf/deploy-descriptor.xsd">
+	
+	<rilascio ambiente="@@@AMBIENTE" cliente="COTO" istanza="01" unita-installazione="sipreserv" staging="false">
+		<prodotto codice="SIPRED" versione="2.0.0">
+			<descrizione>Sistema informativo edilizia Privata COTO</descrizione>
+		</prodotto>
+		<componente codice="SIRPESERV">
+			<descrizione>
+               Servizi Sistema informativo edilizia Privata 
+            </descrizione>
+		</componente>
+	</rilascio>
+	
+	<lista-servizi>
+	   <#list classlist as c>
+		 <servizio nome="SIPRED${envUpper}_ORCH_${c.simpleName}" versione-intf="${versioneInterfaccia}" versione-impl="${versionePacchetto}"  tipo-servizio="A"  tipo-erogazione="O">
+			<versione-retrocompatibile>true</versione-retrocompatibile>
+  		 </servizio>
+		</#list>
+	</lista-servizi>
+	
+	<lista-binding>
+	<#list classlist as c>
+		<binding servizio="SIPRED${envUpper}_ORCH_${c.simpleName}" versione="${versioneInterfaccia}" protocollo="CSI-java-t3">
+		    <endpoint>
+		        <csi-endpoint
+		                      pd-file="sipred_pd_orch_${c.simpleName}.xml">
+		                      <override-url>@@@ADRESS_T3_SIPRESERV</override-url>			
+		        </csi-endpoint>
+	   	    </endpoint>
+		</binding>
+	</#list>
+	</lista-binding>
+	
+</deploy-descriptor>

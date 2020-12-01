@@ -1,0 +1,7 @@
+package ${interfaceClass.package.name}.ejb;
+
+import it.csi.sipred.sipreserv.components.common.ejb.GenericBusinessComponentListenerHome;
+
+public interface ${interfaceClass.simpleName}Home extends GenericBusinessComponentListenerHome {
+	public ${interfaceClass.simpleName}Remote create()throws javax.ejb.CreateException,java.rmi.RemoteException;
+}

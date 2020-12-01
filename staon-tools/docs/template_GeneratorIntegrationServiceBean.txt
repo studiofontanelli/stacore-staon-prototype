@@ -1,0 +1,52 @@
+package ${interfaceClass.package.name}.ejb;
+
+import it.csi.sipred.sipreserv.integration.common.ejb.GenericAdapterBean;
+import it.csi.util.beanlocatorfactory.ServiceBeanLocator;
+import it.csi.sipred.sipreserv.infrastructure.logging.LoggerFactory;
+import it.csi.sipred.sipreserv.infrastructure.logging.LoggerUtility;
+
+
+import javax.ejb.CreateException;
+import it.csi.csi.wrapper.CSIException;
+
+public class ${interfaceClass.simpleName}AdapterBean extends GenericAdapterBean  implements ${interfaceClass.name} {
+
+	private static final long serialVersionUID = 1L;
+
+    ${interfaceClass.name} helper=null;
+	
+	
+	protected ${interfaceClass.name} getHelper() throws CSIException
+	{
+	     if (helper==null)
+	     {
+	     	try{
+		    	log.debug("Inizializzo il bridge di integrazione ${interfaceClass.name}");
+				helper=(${interfaceClass.name})ServiceBeanLocator.getBeanByName("serviceintegration.${interfaceClass.simpleName}Adapter"); 
+				}
+				catch (Throwable t)
+				{
+				   log.fatal(LoggerUtility.dumpException(t));
+				   throw new CSIException("Errore durante la creazione del serviceAdapter",t);
+				}
+	     }
+	     return helper;
+	     
+	}
+	
+	public void ejbCreate() throws CreateException 
+	{
+	}
+
+<#list interfaceClass.methods as currentMethod>
+
+	public ${currentMethod.returnType.name}  ${currentMethod.name}(
+	<#list currentMethod.parameterTypes as currentParam>
+			${currentParam.name} par${currentParam_index + 1} <#if currentParam_has_next>,</#if> </#list> ) throws CSIException
+    {
+    		log.debug("Chiamo il metodo ${currentMethod.name} con la transazione sospesa!");
+        	<#if currentMethod.returnType.name!='void'>return</#if>  getHelper().${currentMethod.name}(<#list currentMethod.parameterTypes as currentParam>par${currentParam_index + 1} <#if currentParam_has_next>,</#if></#list>);
+	}
+  </#list>
+
+}

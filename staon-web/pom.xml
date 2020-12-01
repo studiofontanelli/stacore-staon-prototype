@@ -10,6 +10,13 @@
 	<artifactId>staon-web</artifactId>
 	<packaging>war</packaging>
 
+	<dependencies>
+
+
+
+
+	</dependencies>
+
 	<build>
 		<resources>
 			<resource>
@@ -36,10 +43,8 @@
 							<directory>src/main/webapp</directory>
 							<includes>
 								<include>**/web.xml</include>
-								<!--<include>*.css</include>
-								<include>*.html</include>
-								<include>*.js</include>
-								<include>*.png</include>-->
+								<!--<include>*.css</include> <include>*.html</include> <include>*.js</include>
+									<include>*.png</include> -->
 							</includes>
 						</resource>
 					</webResources>

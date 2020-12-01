@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<porta-delegata name="SIPRED${envUpper}_ORCH_PD_${interfaceClass.simpleName}"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="pd.xsd">
+	<services>
+		<service name="SIPRED${envUpper}_ORCH_${interfaceClass.simpleName}"
+			public-interface-class="${interfaceClass.name}">
+			<operations>
+		<#list interfaceClass.methods as currentMethod>
+				<operation name="${currentMethod.name}"
+					type="synch-call">
+					<param-list>
+						<#list currentMethod.parameterTypes as currentParam>
+						<param name="par${currentParam_index + 1}"
+							type="${currentParam.canonicalName}" />
+						</#list>
+					</param-list>
+					<ret-val type="${currentMethod.returnType.canonicalName}" />
+				</operation>
+		 </#list>
+			</operations>
+		</service>
+	</services>
+	<config>
+		<url-pa></url-pa>
+		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
+			<pluggable-pd name="SIPRED${envUpper}_ORCH_PA_${interfaceClass.simpleName}" class="it.csi.csi.porte.ejb20.PortaDelegataEJB" url-pa="sipreserv${env}/orchestration/ejb/pa_${interfaceClass.simpleName}">
+				<properties>		
+				</properties>
+			</pluggable-pd>
+		</pluggable-pd-list>
+		<queue-manager url="" />
+	</config>
+</porta-delegata>
