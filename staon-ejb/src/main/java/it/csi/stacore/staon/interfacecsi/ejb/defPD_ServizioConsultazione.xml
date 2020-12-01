@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <porta-delegata name="SIPRED_COMP_PD_ServizioConsultazione"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="pd.xsd">
 	<services>
 		<service name="SIPRED_COMP_PA_ServizioConsultazione"
@@ -19,8 +19,8 @@
 		<url-pa></url-pa>
 		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
 			<pluggable-pd name="SIPRED_COMP_PA_ServizioConsultazione" class="it.csi.csi.porte.ejb20.PortaDelegataEJB" url-pa="sipreserv/components/ejb/pa_ServizioConsultazione">
-				<properties>		
-					<property  name="java.naming.factory.initial" value="weblogic.jndi.WLInitialContextFactory"/>			
+				<properties>
+					<property  name="java.naming.factory.initial" value="weblogic.jndi.WLInitialContextFactory"/>
 				</properties>
 			</pluggable-pd>
 		</pluggable-pd-list>

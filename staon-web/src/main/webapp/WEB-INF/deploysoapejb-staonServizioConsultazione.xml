@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<isd:service xmlns:isd="http://xml.apache.org/xml-soap/deployment" id="urn:staonServizioConsultazione">
-
+<isd:service xmlns:isd="http://xml.apache.org/xml-soap/deployment" id="urn:servizioConsultazione">
 	<isd:provider type="it.csi.csi.porte.soap.apache.StatelessEJBProvider" scope="Application" methods="invokeSynch invokeAsynch">
-		<isd:option key="JNDIName" value="ejb/stacore/staon/PA_ServizioConsultazione" />
-		<isd:option key="app.context.name" value="staonServizioConsultazione" />
+		<isd:option key="JNDIName" value="java:app/it.csi.stacore-staon-ejb-1.0.0/ServizioConsultazionePA!it.csi.csi.porte.ejb20.PortaApplicativaHome" />
+		<isd:option key="app.context.name" value="servizioConsultazione" />
 	</isd:provider>
 	<isd:faultListener>org.apache.soap.server.ExceptionFaultListener</isd:faultListener>
 	<isd:mappings defaultRegistryClass="it.csi.csi.porte.soap.apache.GeneralizedMappingRegistry"></isd:mappings>
 </isd:service>
-
-<!-- 
-<isd:service xmlns:isd="http://xml.apache.org/xml-soap/deployment" id="urn:staonServizioComunicazioneUtente">
-
-	<isd:provider type="it.csi.csi.porte.soap.apache.StatelessEJBProvider" scope="Application" methods="invokeSynch invokeAsynch">
-		<isd:option key="JNDIName" value="ejb/stacore/staon/PA_ServizioComunicazioneUtente" />
-		<isd:option key="app.context.name" value="staonServizioComunicazioneUtente" />
-	</isd:provider>
-	<isd:faultListener>org.apache.soap.server.ExceptionFaultListener</isd:faultListener>
-	<isd:mappings defaultRegistryClass="it.csi.csi.porte.soap.apache.GeneralizedMappingRegistry"></isd:mappings>
-</isd:service>
- -->
-
-
-
 

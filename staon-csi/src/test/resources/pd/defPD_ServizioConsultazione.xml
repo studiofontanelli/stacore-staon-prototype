@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<porta-delegata name="STACORE_staon_ServizioConsultazione"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="pd.xsd">
+	<services>
+		<service name="STACORE_staonD_ServizioConsultazione"
+			public-interface-class="it.csi.stacore.staon.interfacecsi.ServizioConsultazione">
+			<operations>
+				<operation name="testResources" type="synch-call">
+					<param-list>
+					</param-list>
+					<ret-val type="boolean" />
+				</operation>
+			</operations>
+		</service>
+	</services>
+	<config>
+		<url-pa>**not used**</url-pa>
+		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
+			<pluggable-pd name="servizioConsultazione"
+							class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
+							url-pa="http://127.0.0.1:8080/staon/servlet/rpcrouter">
+				<properties>
+
+				</properties>
+			</pluggable-pd>
+		</pluggable-pd-list>
+		<queue-manager url="" />
+	</config>
+</porta-delegata>
+
+
+
+<!--
+
+
+<config>
+		<url-pa>**not used**</url-pa>
+		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
+			<pluggable-pd name="servsifpIridesrv"
+				class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
+				url-pa="@fpgensrw.servsifp.pa.url@/servsifpApplServsifpPabr/servlet/rpcrouter" />
+		</pluggable-pd-list>
+		<queue-manager url="" />
+	</config>
+ -->
