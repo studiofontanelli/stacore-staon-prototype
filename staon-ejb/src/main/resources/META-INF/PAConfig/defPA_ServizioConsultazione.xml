@@ -5,7 +5,7 @@
 
   <adapter  class="it.csi.csi.wrapper.StatelessEJBAdapter">
 	   <properties>
-	     <property name="jndi-name"    value="java:app/it.csi.stacore-staon-ejb-1.0.0/ServizioConsultazione!it.csi.stacore.staon.ejb.ServizioConsultazioneHome"/>
+	     <property name="jndi-name"    value="java:app/staon-ejb/ServizioConsultazione!it.csi.stacore.staon.ejb.ServizioConsultazioneHome"/>
 	     <property name="home-class"   value="it.csi.stacore.staon.ejb.ServizioConsultazioneHome" />
 	     <property name="remote-class" value="it.csi.stacore.staon.ejb.ServizioConsultazione" />
 	   </properties>

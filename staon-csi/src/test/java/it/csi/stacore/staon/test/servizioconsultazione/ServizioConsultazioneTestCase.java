@@ -5,7 +5,6 @@ import org.junit.Test;
 import it.csi.csi.porte.InfoPortaDelegata;
 import it.csi.csi.porte.proxy.PDProxy;
 import it.csi.csi.util.xml.PDConfigReader;
-import it.csi.finco.interfacecsi.FincoFPGestioneCommissioneService;
 import it.csi.stacore.staon.interfacecsi.ServizioConsultazione;
 import junit.framework.TestCase;
 

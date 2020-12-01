@@ -42,42 +42,25 @@
    </enterprise-beans>
 
 
+   <assembly-descriptor>
+		<container-transaction>
 
+			<method>
+				<ejb-name>ServizioConsultazione</ejb-name>
+				<method-name>é</method-name>
+			</method>
+		<trans-attribute>RequiresNew</trans-attribute>
+		</container-transaction>
 
+		<container-transaction>
+			<method>
+				<ejb-name>ServizioConsultazionePA</ejb-name>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>NotSupported</trans-attribute>
+		</container-transaction>
+	</assembly-descriptor>
 
 </ejb-jar>
 
-<!--
 
-<session>
-            <display-name>IrideFPPA</display-name>
-            <ejb-name>IrideFPPA</ejb-name>
-            <home>it.csi.csi.porte.ejb20.PortaApplicativaHome</home>
-            <remote>it.csi.csi.porte.ejb20.PortaApplicativaEJB</remote>
-            <ejb-class>it.csi.csi.porte.ejb20.PortaApplicativaBean</ejb-class>
-            <session-type>Stateless</session-type>
-            <transaction-type>Container</transaction-type>
-            <env-entry>
-                <description />
-                <env-entry-name>defpa</env-entry-name>
-                <env-entry-type>java.lang.String</env-entry-type>
-                <env-entry-value>/META-INF/PAConfig/defPAejbIride.xml</env-entry-value>
-            </env-entry>
-        </session>
-        <session>
-            <display-name>IrideFPBean</display-name>
-            <ejb-name>IrideFPBean</ejb-name>
-            <home>it.csi.iride.ejb.IrideFPHome</home>
-            <remote>it.csi.iride.ejb.IrideFP</remote>
-            <ejb-class>it.csi.iride.ejb.IrideFPBean</ejb-class>
-            <session-type>Stateless</session-type>
-            <transaction-type>Container</transaction-type>
-            <env-entry>
-                <description />
-                <env-entry-name>DataSourceJNDIName</env-entry-name>
-                <env-entry-type>java.lang.String</env-entry-type>
-                <env-entry-value>java:jboss/servsifp/jdbc/servsifpTxDS</env-entry-value>
-            </env-entry>
-        </session>
-
--->

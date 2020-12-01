@@ -8,22 +8,22 @@ import it.csi.stacore.staon.tools.ClassDiscovery;
 
 public class GeneratorComponentsBeans extends AbstractGenerator {
 
-	public GeneratorComponentsBeans(String baseSourceDir, String baseOutputDir, String onlineBatch) {
-		super(baseSourceDir, baseOutputDir, onlineBatch);
+	public GeneratorComponentsBeans(String baseSourceDir, String baseOutputDir) {
+		super(baseSourceDir, baseOutputDir);
 	}
 
 
 	public static void main(String[] args) {
-		if (args.length!=3)
+		if (args.length!=2)
 		{
-			System.err.println("Questo tool richiede 3 parametri. (directory dei sorgenti,directory di output,{online|batch|orch})");
+			System.err.println("Questo tool richiede 3 parametri. (directory dei sorgenti,directory di output)");
 			System.exit(-1);
 		}
 		String sourceDir=args[0];
 		String destDir=args[1];
-		String onlineBatch=args[2];
+
 		try {
-			new GeneratorComponentsBeans(sourceDir,destDir,onlineBatch).generate();
+			new GeneratorComponentsBeans(sourceDir,destDir).generate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -140,6 +140,7 @@
 						<ejbModule>
 							<groupId>it.csi.stacore</groupId>
 							<artifactId>staon-ejb</artifactId>
+							<bundleFileName>staon-ejb.jar</bundleFileName>
 						</ejbModule>
 						<webModule>
 							<groupId>it.csi.stacore</groupId>

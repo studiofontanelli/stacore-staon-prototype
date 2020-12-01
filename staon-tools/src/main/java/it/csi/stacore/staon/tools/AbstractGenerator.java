@@ -16,15 +16,15 @@ public abstract class AbstractGenerator {
 
 	protected String baseSourceDir;
 	protected String baseOutputDir;
-	protected String onlineBatchOrch;
 
 
 
-	public AbstractGenerator(String baseSourceDir, String baseOutputDir, String onlineBatchOrch) {
+
+	public AbstractGenerator(String baseSourceDir, String baseOutputDir) {
 		super();
 		this.baseSourceDir = baseSourceDir;
 		this.baseOutputDir = baseOutputDir;
-		this.onlineBatchOrch=onlineBatchOrch;
+
 	}
 
 
@@ -41,23 +41,10 @@ public abstract class AbstractGenerator {
 		Boolean online=null;
 		Boolean batch=null;
 		Boolean orch=null;
-		if ("online".equals(onlineBatchOrch)){
-			online=Boolean.TRUE;
-			batch = Boolean.FALSE;
-			orch = Boolean.FALSE;
-		}
-		else if ("batch".equals(onlineBatchOrch)){
-			online = Boolean.FALSE;
-			batch = Boolean.TRUE;
-			orch = Boolean.FALSE;
-		}
-		else if ("orch".equals(onlineBatchOrch)){
-			online = Boolean.FALSE;
-			batch = Boolean.FALSE;
-			orch = Boolean.TRUE;
-		}
-		else
-			throw new java.lang.UnsupportedOperationException("Parametro onlinebatch deve valere online, batch o orch");
+
+		online=Boolean.TRUE;
+		batch = Boolean.FALSE;
+		orch = Boolean.FALSE;
 
 		freeMarkerModel.put("online",online);
 		freeMarkerModel.put("batch", batch);

@@ -2,7 +2,7 @@
 
 <isd:service xmlns:isd="http://xml.apache.org/xml-soap/deployment" id="urn:servizioConsultazione">
 	<isd:provider type="it.csi.csi.porte.soap.apache.StatelessEJBProvider" scope="Application" methods="invokeSynch invokeAsynch">
-		<isd:option key="JNDIName" value="java:app/it.csi.stacore-staon-ejb-1.0.0/ServizioConsultazionePA!it.csi.csi.porte.ejb20.PortaApplicativaHome" />
+		<isd:option key="JNDIName" value="java:app/staon-ejb/ServizioConsultazionePA!it.csi.csi.porte.ejb20.PortaApplicativaHome" />
 		<isd:option key="app.context.name" value="servizioConsultazione" />
 	</isd:provider>
 	<isd:faultListener>org.apache.soap.server.ExceptionFaultListener</isd:faultListener>

@@ -23,7 +23,7 @@ public class GeneratorTest {
 
 			GeneratorComponentsBeans g=new GeneratorComponentsBeans(
 					"/opt/java/projects/studiofontanelli/stacore-staon-prototype/staon-csi/src/main/java/",
-					"/opt/java/projects/studiofontanelli/stacore-staon-prototype/staon-ejb/src/main/java/","online");
+					"/opt/java/projects/studiofontanelli/stacore-staon-prototype/staon-ejb/src/main/java/");
 			g.generate();
 
 			boolean result = true;
