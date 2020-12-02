@@ -29,6 +29,12 @@
 			<version>${ear.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>staon-business</artifactId>
+			<version>${ear.version}</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/javax.ejb/ejb-api -->
 		<dependency>
@@ -54,9 +60,50 @@
 			<version>${log4j.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
 
 
 
+		<dependency>
+			<groupId>it.csi.util</groupId>
+			<artifactId>util-perf</artifactId>
+			<version>1.0.1</version>
+
+		</dependency>
 
 
 

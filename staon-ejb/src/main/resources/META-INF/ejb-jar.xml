@@ -49,7 +49,7 @@
 				<ejb-name>ServizioConsultazione</ejb-name>
 				<method-name>é</method-name>
 			</method>
-		<trans-attribute>RequiresNew</trans-attribute>
+			<trans-attribute>RequiresNew</trans-attribute>
 		</container-transaction>
 
 		<container-transaction>

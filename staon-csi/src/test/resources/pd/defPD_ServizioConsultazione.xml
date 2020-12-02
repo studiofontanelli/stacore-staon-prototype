@@ -3,13 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="pd.xsd">
 	<services>
-		<service name="STACORE_staonD_ServizioConsultazione"
-			public-interface-class="it.csi.stacore.staon.interfacecsi.ServizioConsultazione">
+		<service name="STACORE_staon_ServizioConsultazione"
+			public-interface-class="it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface">
 			<operations>
 				<operation name="testResources" type="synch-call">
 					<param-list>
 					</param-list>
 					<ret-val type="boolean" />
+				</operation>
+				<operation name="findRegione" type="synch-call">
+					<param-list>
+					</param-list>
+					<ret-val type="it.csi.stacore.staon.dto.RegioneDto[]" />
 				</operation>
 			</operations>
 		</service>

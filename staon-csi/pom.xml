@@ -18,6 +18,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>staon-util</artifactId>
+			<version>${ear.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>it.csi.csi</groupId>
 			<artifactId>csi-core</artifactId>
 			<version>${csi.lib.version}</version>

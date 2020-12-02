@@ -12,8 +12,20 @@
 
 	<dependencies>
 
+		<!--
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>stacore-business</artifactId>
+			<version>${ear.version}</version>
+		</dependency>
 
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>stacore-dto</artifactId>
+			<version>${ear.version}</version>
+		</dependency>
 
+ -->
 
 	</dependencies>
 
