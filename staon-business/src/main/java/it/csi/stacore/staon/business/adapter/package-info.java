@@ -5,4 +5,4 @@
  * @author andreafontanelli
  *
  */
-package it.csi.stacore.staon.bo;
+package it.csi.stacore.staon.business.adapter;

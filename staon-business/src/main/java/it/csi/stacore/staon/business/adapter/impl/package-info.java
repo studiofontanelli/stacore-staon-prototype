@@ -5,4 +5,4 @@
  * @author andreafontanelli
  *
  */
-package it.csi.stacore.staon.exception;
+package it.csi.stacore.staon.business.adapter.impl;

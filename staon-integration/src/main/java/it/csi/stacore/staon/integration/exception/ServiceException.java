@@ -1,4 +1,4 @@
-package it.csi.stacore.staon.exception;
+package it.csi.stacore.staon.integration.exception;
 
 
 

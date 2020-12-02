@@ -90,10 +90,7 @@ public class ServizioConsultazioneTestCase extends TestCase {
 		try {
 			RegioneDto[] result = service.findRegione();
 
-			Tracer.error(LOG, getClass().getSimpleName(), method, "result\n " + XmlSerializer.objectToXml(result));
-
-
-
+			Tracer.info(LOG, getClass().getSimpleName(), method, "result\n " + XmlSerializer.objectToXml(result));
 			assertNotNull(result);
 		} catch (Exception e) {
 

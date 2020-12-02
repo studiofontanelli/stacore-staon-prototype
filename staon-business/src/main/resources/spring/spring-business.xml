@@ -17,11 +17,9 @@
 
 
 	<!-- SERVICE -->
-	<context:component-scan base-package="it.csi.stacore.staon.service.*" />
+	<context:component-scan base-package="it.csi.stacore.staon.business.*" />
 
 
-	<!-- Helper -->
-	<context:component-scan base-package="it.csi.stacore.staon.helper.*" />
 
 	<!-- Process annotations on registered beans like @Autowired... -->
 	<context:annotation-config />
