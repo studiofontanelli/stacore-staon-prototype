@@ -7,7 +7,7 @@ import java.util.List;
 
 import it.csi.stacore.staon.bo.Decodifica;
 import it.csi.stacore.staon.bo.id.IdDecodifica;
-import it.csi.stacore.staon.integration.exception.ServiceException;
+import it.csi.stacore.staon.integration.exception.IntegrationException;
 
 /**
  * @author fguglielmelli
@@ -105,7 +105,7 @@ public class Sportello extends Decodifica implements Serializable{
 	 * Questo metodo restituisce la Struttura COMPLETA di un ente
 	 * @param enteid
 	 * @return Ente
-	 * @throws ServiceException
+	 * @throws IntegrationException
 	 * @throws ApplicationException
 	 * @throws java.rmi.RemoteException
 	 */

@@ -35,10 +35,6 @@
 			<version>${ear.version}</version>
 		</dependency>
 
-
-
-
-
 		<!-- https://mvnrepository.com/artifact/javax.ejb/ejb-api -->
 		<dependency>
 			<groupId>javax.ejb</groupId>
@@ -99,12 +95,17 @@
 			<version>${springframework.version}</version>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>it.csi.util</groupId>
 			<artifactId>util-perf</artifactId>
 			<version>1.0.1</version>
+
+		</dependency>
+
+		<dependency>
+			<groupId>it.csi.csi</groupId>
+			<artifactId>csi-stadapter</artifactId>
+			<version>${csi.lib.version}</version>
 
 		</dependency>
 

@@ -15,7 +15,7 @@ import it.csi.stacore.staon.bo.Regione;
 import it.csi.stacore.staon.bo.id.IdRegione;
 import it.csi.stacore.staon.etc.Constants;
 import it.csi.stacore.staon.integration.dao.DecodificaDAO;
-import it.csi.stacore.staon.integration.exception.ServiceException;
+import it.csi.stacore.staon.integration.exception.IntegrationException;
 import it.csi.stacore.staon.integration.service.ServiziDecodifica;
 import it.csi.stacore.staon.util.Tracer;
 import it.csi.stacore.staon.util.XmlSerializer;
@@ -31,14 +31,14 @@ public class ServiziDecodificaImpl implements ServiziDecodifica {
 	@Autowired
 	private DecodificaDAO decodificaDAO;
 
-	public Connection getConnection() throws ServiceException{
+	public Connection getConnection() throws IntegrationException{
 		final String method = "getConnection";
 		try {
 			return jdbcTemplate.getDataSource().getConnection();
 		}
 		catch(SQLException e) {
 			Tracer.error(LOG, getClass().getName(), method, "SQLException " + e);
-			throw new ServiceException("Cannot get connection", e);
+			throw new IntegrationException("Cannot get connection", e);
 		}
 	}
 
@@ -55,55 +55,16 @@ public class ServiziDecodificaImpl implements ServiziDecodifica {
 	}
 
 	@Override
-	public List<Regione> findRegione() throws ServiceException {
-
+	public List<Regione> findRegione() throws IntegrationException {
 		final String method = "findRegione";
 		Connection connection = null;
 		try{
 			connection = getConnection();
-			List<Regione> minimmi = decodificaDAO.findRegione(connection);
-
-
-			Tracer.debug(LOG,getClass().getName(), method, "minimmi\n " + XmlSerializer.objectToXml(minimmi));
-
-			List<Regione> l = new ArrayList<Regione>();
-			Regione r = new Regione(new IdRegione(13), "13", "Piemonte");
-			l.add(r);
-			Regione rr = new Regione(new IdRegione(1), "1", "Rocciamelone");
-			l.add(rr);
-			return l;
+			return decodificaDAO.findRegione(connection);
 		}
 		finally{
-			Tracer.debug(LOG,getClass().getName(), method, "END");
 			releaseConnection(connection);
 		}
-
-
-
 	}
 
 }
-/*
-
-
-List returnList = new ArrayList();
-ConnectionFactory connectionFactory = getConnectionFactory();
-Connection conn = null;
-
-try {
-	conn = connectionFactory.getConnection();
-
-	DecodificaDAO decodDAO = OracleDAOFactory.getInstance().getDecodificaDAO();
-	returnList.addAll(decodDAO.findRegione(conn));
-} catch (ResourceAccessException ex) {
-	if (getLogger().isErrorEnabled()) {
-		getLogger().error("ResourceAccessException findRegione: " + ex.getNestedExcClassName() + ":" + ex.getNestedExcMsg(), ex);
-	}
-
-	throw new ServiceException(CLASS_NAME + ".findRegione", ex);
-} finally {
-	connectionFactory.releaseConnection(conn);
-}
-
-return returnList;
- */

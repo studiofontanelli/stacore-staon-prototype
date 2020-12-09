@@ -210,9 +210,8 @@ public class OracleDecodificaDAO extends AbstractDAO implements DecodificaDAO {
 	 *
 	 * @throws ResourceAccessException DOCUMENT ME!
 	 */
-	public List findRegione(Connection connection) throws ResourceAccessException {
+	public List<Regione> findRegione(Connection connection) throws ResourceAccessException {
 		SelectRegione select = new SelectRegione();
-
 		return find(connection, select);
 	}
 
@@ -528,10 +527,7 @@ public class OracleDecodificaDAO extends AbstractDAO implements DecodificaDAO {
 		try {
 			return select.executeMultipla(connection);
 		} catch (SQLException e) {
-			if (getLogger().isErrorEnabled()) {
-				getLogger().error("SQLException find: " + e.getMessage(), e);
-			}
-
+			getLogger().error("SQLException find: " + e.getMessage(), e);
 			throw new ResourceAccessException("OracleDecodificaDAO.find", e);
 		}
 	}

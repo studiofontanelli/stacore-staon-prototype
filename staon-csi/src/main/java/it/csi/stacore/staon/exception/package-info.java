@@ -5,4 +5,4 @@
  * @author andreafontanelli
  *
  */
-package it.csi.stacore.staon.ejb;
+package it.csi.stacore.staon.exception;

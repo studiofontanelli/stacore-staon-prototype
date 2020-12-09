@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import it.csi.stacore.staon.etc.Constants;
+import it.csi.stacore.staon.util.Tracer;
 
 
 
@@ -102,7 +103,10 @@ public class OracleQueryList {
 	 * @return
 	 */
 	public OracleQuery getQuery(String name) {
-		getLogger().debug("Reperimento query: " + name + " in corso...");
+		final String method = "getQuery";
+		//getLogger().debug("Reperimento query: " + name + " in corso...");
+		Tracer.debug(getLogger(), getClass().getName(), "getQuery", "Reperimento query: " + name + " in corso...");
+
 		return (OracleQuery) queries.get(name);
 	}
 

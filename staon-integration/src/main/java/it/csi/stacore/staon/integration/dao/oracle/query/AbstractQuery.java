@@ -47,7 +47,6 @@ public abstract class AbstractQuery {
 	 */
 	public String getSQLStatement() throws InvalidSearchObjectException {
 		OracleQuery q = getOracleQueryList().getQuery(getClass().getName());
-
 		return q.getQuery();
 	}
 

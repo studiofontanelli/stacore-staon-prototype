@@ -6,7 +6,7 @@ package it.csi.stacore.staon.integration.exception;
  * @author $author$
  * @version $Revision$
  */
-public class ResourceAccessException extends ServiceException {
+public class ResourceAccessException extends IntegrationException {
 	//~ Constructors =============================================================
 
 	/**

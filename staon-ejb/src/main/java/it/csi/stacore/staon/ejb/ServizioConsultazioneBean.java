@@ -1,8 +1,12 @@
 package it.csi.stacore.staon.ejb;
 
+import java.rmi.RemoteException;
+
 import javax.ejb.CreateException;
 
+import it.csi.csi.wrapper.CSIException;
 import it.csi.stacore.staon.dto.RegioneDto;
+import it.csi.stacore.staon.exception.BusinessException;
 import it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface;
 import it.csi.stacore.staon.util.Tracer;
 
@@ -39,7 +43,7 @@ public class ServizioConsultazioneBean  extends CommonServiceBean  implements Se
 	 * (non-Javadoc)
 	 * @see it.csi.stacore.staon.ejb.CommonBean#testResources()
 	 */
-	public boolean testResources() throws Exception {
+	public boolean testResources() throws Exception, RemoteException {
 		try {
 			return servizioConsultazioneInterface.testResources();
 		}
@@ -48,14 +52,16 @@ public class ServizioConsultazioneBean  extends CommonServiceBean  implements Se
 		}
 	}
 
-
 	@Override
-	public RegioneDto[] findRegione() throws Exception {
+	public RegioneDto[] findRegione() throws Exception, RemoteException  {
+		final String method = "findRegione";
 		try {
 			return servizioConsultazioneInterface.findRegione();
 		}
-		catch(Exception e) {
-			throw e;
+		catch(BusinessException e) {
+			sessionContext.setRollbackOnly();
+			Tracer.error(LOG,  getClass().getName(), method, "Exception " + e);
+			throw new CSIException(e.getMessage());
 		}
 	}
 

@@ -109,7 +109,8 @@ public interface DecodificaDAO {
      *
      * @throws ResourceAccessException DOCUMENT ME!
      */
-    public List findRegione(Connection connection) throws ResourceAccessException;
+
+    public List<Regione> findRegione(Connection connection) throws ResourceAccessException;
 
 
     public List findRegioneIcar(Connection connection) throws ResourceAccessException;

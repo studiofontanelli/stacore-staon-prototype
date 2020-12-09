@@ -6,10 +6,9 @@ public interface ServizioConsultazioneInterface extends BusinessComponent  {
 
 
 
-	boolean testResources() throws Exception ;
+	boolean testResources() throws Exception;
 
-
-
+	
 	public RegioneDto [] findRegione() throws Exception;
 
 }
