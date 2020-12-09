@@ -84,6 +84,9 @@
 		<commons-lang3.version>3.8.1</commons-lang3.version>
 		<ehcache.version>2.9.0</ehcache.version>
 
+		<commons-dbcp.version>1.4</commons-dbcp.version>
+		<commons-pool.version>1.6.0.redhat-7</commons-pool.version>
+
 
 	</properties>
 

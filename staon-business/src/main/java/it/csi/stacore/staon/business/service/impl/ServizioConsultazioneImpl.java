@@ -33,7 +33,7 @@ public class ServizioConsultazioneImpl extends CommonServiceImpl implements Serv
 	public RegioneDto[] findRegione() throws Exception{
 		final String method = "findRegione";
 		try {
-			if(1==1)
+			if(1==12)
 				throw new Exception("ROMPO TUTO");
 			List<RegioneDto> ll = regioneDtoAdapter.convertTo(serviziDecodifica.findRegione());
 			return ll.stream().toArray(RegioneDto[]::new);
