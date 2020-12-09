@@ -10,9 +10,12 @@ export MVN_PROFILE=macfonta
 
 COMMAND="mvn -f ../../pom.xml -e -s $MVN_SETTINGS -Dmaven.test.skip=true -P$MVN_PROFILE clean compile package install"
 
-echo "$COMMAND" 
+echo "$COMMAND"
 
-exec $COMMAND 
+exec $COMMAND
+
+
+
 
 
 
