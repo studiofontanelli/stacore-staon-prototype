@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
-
 <ejb-jar>
-
-   <description></description>
-   <display-name></display-name>
-
+   <description>STACORE staon</description>
+   <display-name>staon</display-name>
    <enterprise-beans>
 
-  		<session>
-        	<description>ServizioConsultazione</description>
-        	<ejb-name>ServizioConsultazione</ejb-name>
-
-	        <home>it.csi.stacore.staon.ejb.ServizioConsultazioneHome</home>
-	        <remote>it.csi.stacore.staon.ejb.ServizioConsultazione</remote>
-	        <ejb-class>it.csi.stacore.staon.ejb.ServizioConsultazioneBean</ejb-class>
-	        <session-type>Stateless</session-type>
-	        <transaction-type>Container</transaction-type>
-	    </session>
-
-	    <session>
-            <display-name>ServizioConsultazionePA</display-name>
+	 <session>
+         <description>Servizio ServizioConsultazione</description>
+         <display-name>Servizio ServizioConsultazione</display-name>
+         <ejb-name>ServizioConsultazione</ejb-name>
+         <home>it.csi.stacore.staon.ejb.ServizioConsultazioneHome</home>
+         <remote>it.csi.stacore.staon.ejb.ServizioConsultazione</remote>
+         <ejb-class>it.csi.stacore.staon.ejb.ServizioConsultazioneBean</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+      </session>
+	  <session>
+       		<description>Servizio di Porta Applicativa ServizioConsultazione</description>
+        	 <display-name>Servizio di Porta Applicativa ServizioConsultazione</display-name>
             <ejb-name>ServizioConsultazionePA</ejb-name>
             <home>it.csi.csi.porte.ejb20.PortaApplicativaHome</home>
             <remote>it.csi.csi.porte.ejb20.PortaApplicativaEJB</remote>
@@ -35,32 +31,22 @@
                 <env-entry-value>/META-INF/PAConfig/defPA_ServizioConsultazione.xml</env-entry-value>
             </env-entry>
         </session>
-
-
-
-
-   </enterprise-beans>
-
-
-   <assembly-descriptor>
+    </enterprise-beans>
+ 	<assembly-descriptor >
 		<container-transaction>
-
-			<method>
-				<ejb-name>ServizioConsultazione</ejb-name>
-				<method-name>é</method-name>
-			</method>
-			<trans-attribute>RequiresNew</trans-attribute>
-		</container-transaction>
-
-		<container-transaction>
-			<method>
-				<ejb-name>ServizioConsultazionePA</ejb-name>
-				<method-name>*</method-name>
-			</method>
-			<trans-attribute>NotSupported</trans-attribute>
-		</container-transaction>
+            <method>
+                <ejb-name>ServizioConsultazione</ejb-name>
+                <method-name>*</method-name>
+            </method>
+        	<trans-attribute>RequiresNew</trans-attribute>
+        </container-transaction>
+             <container-transaction>
+            <method>
+                <ejb-name>ServizioConsultazionePA</ejb-name>
+                <method-name>*</method-name>
+            </method>
+        	<trans-attribute>NotSupported</trans-attribute>
+        </container-transaction>
 	</assembly-descriptor>
 
 </ejb-jar>
-
-

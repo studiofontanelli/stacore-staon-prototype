@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<porta-delegata name="STACORE_staon_ServizioConsultazione"
+<porta-delegata name="STACORE_staon_ServizioConsultazioneInterface"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="pd.xsd">
 	<services>
-		<service name="STACORE_staon_ServizioConsultazione"
+		<service name="STACORE_staon_ServizioConsultazioneInterface"
 			public-interface-class="it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface">
 			<operations>
-				<operation name="testResources" type="synch-call">
+				<operation name="testResources"
+					type="synch-call">
 					<param-list>
 					</param-list>
 					<ret-val type="boolean" />
 				</operation>
-				<operation name="findRegione" type="synch-call">
+				<operation name="findRegione"
+					type="synch-call">
 					<param-list>
 					</param-list>
 					<ret-val type="it.csi.stacore.staon.dto.RegioneDto[]" />
@@ -20,11 +22,11 @@
 		</service>
 	</services>
 	<config>
-		<url-pa>**not used**</url-pa>
+		<url-pa></url-pa>
 		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
 			<pluggable-pd name="servizioConsultazione"
-							class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
-							url-pa="http://127.0.0.1:8080/staonpabr/servlet/rpcrouter">
+				class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
+				url-pa="http://127.0.0.1:8080/staonpabr/servlet/rpcrouter">
 				<properties>
 
 				</properties>
@@ -34,18 +36,3 @@
 	</config>
 </porta-delegata>
 
-
-
-<!--
-
-
-<config>
-		<url-pa>**not used**</url-pa>
-		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
-			<pluggable-pd name="servsifpIridesrv"
-				class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
-				url-pa="@fpgensrw.servsifp.pa.url@/servsifpApplServsifpPabr/servlet/rpcrouter" />
-		</pluggable-pd-list>
-		<queue-manager url="" />
-	</config>
- -->

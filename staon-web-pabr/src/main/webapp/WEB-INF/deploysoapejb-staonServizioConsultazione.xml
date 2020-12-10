@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <isd:service xmlns:isd="http://xml.apache.org/xml-soap/deployment" id="urn:servizioConsultazione">
 	<isd:provider type="it.csi.csi.porte.soap.apache.StatelessEJBProvider" scope="Application" methods="invokeSynch invokeAsynch">
 		<isd:option key="JNDIName" value="java:app/staon-ejb/ServizioConsultazionePA!it.csi.csi.porte.ejb20.PortaApplicativaHome" />

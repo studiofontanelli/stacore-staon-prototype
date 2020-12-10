@@ -4,6 +4,8 @@ package it.csi.stacore.staon.tools.ejbgenerator;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import it.csi.stacore.staon.interfacecsi.BusinessComponent;
 import it.csi.stacore.staon.tools.AbstractGenerator;
 import it.csi.stacore.staon.tools.ClassDiscovery;
@@ -44,8 +46,8 @@ public class GeneratorPaPdFiles extends AbstractGenerator {
 	private void generatePaPd(Class c, String className, String simpleClassName) throws Exception {
 
 		//Genero il bean
-		Map<String, Object> model = createModel("interfaceClass",c, className, simpleClassName);
-		String ejbName = (String)model.get("ejbName");
+		Map<String, Object> model = createModel("interfaceClass",c);
+		String ejbName = StringUtils.remove(c.getSimpleName(), "Interface");
 
 		String outputFileNamePA="/META-INF/PAConfig/defPA_"+ejbName+".xml";
 		generate("template_portaApplicativaComponents.xml.txt",model, outputFileNamePA);

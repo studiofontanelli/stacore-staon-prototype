@@ -35,12 +35,11 @@ public abstract class AbstractGenerator {
 	 * di default disponibili per tutti i generatori il modello
 	 * specializzato per ogni generatore
 	 */
-	protected Map createModel(String modelKey, Object model, String className, String simpleClassName) {
+	protected Map createModel(String modelKey, Object model) {
 		Map freeMarkerModel=new HashMap<String, Object>();
 		freeMarkerModel.put(modelKey, model);
-		freeMarkerModel.put("ejbPackage" ,"it.csi.stacore.staon.ejb");
-		freeMarkerModel.put("ejbName" ,StringUtils.remove(simpleClassName, "Interface"));
-		freeMarkerModel.put("beanName" ,StringUtils.uncapitalize(StringUtils.remove(simpleClassName, "Interface")));
+
+
 		return freeMarkerModel;
 	}
 

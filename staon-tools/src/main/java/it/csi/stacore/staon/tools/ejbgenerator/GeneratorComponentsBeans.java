@@ -4,6 +4,8 @@ package it.csi.stacore.staon.tools.ejbgenerator;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import it.csi.stacore.staon.interfacecsi.BusinessComponent;
 import it.csi.stacore.staon.tools.AbstractGenerator;
 import it.csi.stacore.staon.tools.ClassDiscovery;
@@ -39,42 +41,48 @@ public class GeneratorComponentsBeans extends AbstractGenerator {
 		for (Class currentClass:c)
 		{
 			System.out.println("Genero gli ejb per "+currentClass.getName());
-			generateSingleEjb(currentClass, currentClass.getName(), currentClass.getSimpleName());
+			generateSingleEjb(currentClass);
 		}
 		// c[1].getPackage().getName()
 	}
 
-	private void generateSingleEjb(Class c, String className, String simpleClassName) throws Exception {
+	private void generateSingleEjb(Class c) throws Exception {
 
 		//Genero il bean
-		Map<String, Object> model = createModel("interfaceClass",c, className, simpleClassName);
-		model.get("ejbName");
+		Map<String, Object> model = createModel("interfaceClass",c);
+		String ejbName = StringUtils.remove(c.getSimpleName(), "Interface");
 
-		String ejbName = (String)model.get("ejbName");
+		String ejbPackage = StringUtils.replace(c.getPackage().getName(), "interfacecsi", "ejb").replace(".", "/");
 
 
-		String outputFileNameBean="/"+c.getPackage().getName().replace(".", "/")+"/ejb/"+ejbName+"Bean.java";
+		System.out.println("ejbPackage= "+ejbPackage);
+
+		String outputFileNameBean="/"+ejbPackage+"/"+ejbName+"Bean.java";
+
+		System.out.println("outputFileNameBean= "+outputFileNameBean);
+
 		generate("template_GeneratorComponentsBean.txt",model, outputFileNameBean);
 		//Genero la home
-		String outputFileNameHome="/"+c.getPackage().getName().replace(".", "/")+"/ejb/"+ejbName+"Home.java";
+		String outputFileNameHome="/"+ejbPackage+"/"+ejbName+"Home.java";
 		generate("template_GeneratorComponentsHome.txt",model, outputFileNameHome);
 		//Genero la remote
-		String outputFileNameRemote="/"+c.getPackage().getName().replace(".", "/")+"/ejb/"+ejbName+"Remote.java";
+		String outputFileNameRemote="/"+ejbPackage+"/"+ejbName+".java";
 		generate("template_GeneratorComponentsRemote.txt",model, outputFileNameRemote);
-
+		/*
 		String outputFileNamePA="/"+c.getPackage().getName().replace(".", "/")+"/ejb/defPA_"+ejbName+".xml";
 		generate("template_portaApplicativaComponents.xml.txt",model, outputFileNamePA);
 
 		String outputFileNamePD="/"+c.getPackage().getName().replace(".", "/")+"/ejb/defPD_"+ejbName+".xml";
 		generate("template_portaDelegataComponents.xml.txt",model, outputFileNamePD);
+		*/
 
 	}
 
 	private void generatePaPd(Class c, String className, String simpleClassName) throws Exception {
 
 		//Genero il bean
-		Map<String, Object> model = createModel("interfaceClass",c, className, simpleClassName);
-		String ejbName = (String)model.get("ejbName");
+		Map<String, Object> model = createModel("interfaceClass",c);
+		String ejbName = StringUtils.remove(c.getSimpleName(), "Interface");
 
 		String outputFileNamePA="/"+c.getPackage().getName().replace(".", "/")+"/ejb/defPA_"+ejbName+".xml";
 		generate("template_portaApplicativaComponents.xml.txt",model, outputFileNamePA);
