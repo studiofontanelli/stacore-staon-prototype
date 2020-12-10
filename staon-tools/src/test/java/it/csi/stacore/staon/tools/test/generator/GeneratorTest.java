@@ -9,7 +9,8 @@ import org.junit.Test;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorComponentsBeans;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorEjbConfFiles;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorPaBrFiles;
-import it.csi.stacore.staon.tools.ejbgenerator.GeneratorPaPdFiles;
+import it.csi.stacore.staon.tools.ejbgenerator.GeneratorPaFiles;
+import it.csi.stacore.staon.tools.ejbgenerator.GeneratorPdFiles;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorSoapEjbFiles;
 
 
@@ -36,7 +37,8 @@ public class GeneratorTest {
 
 			final String sourcePath = rootSrcProject + "/staon-csi/src/main/java/";
 			final String targetEjbPath = rootTargetProject + "/staon-ejb/src/main/java/";
-			final String targetPaPdPath = rootTargetProject + "/staon-ejb/src/main/resources/";
+			final String targetPaPath = rootTargetProject + "/staon-ejb/src/main/resources/";
+			final String targetPdPath = rootTargetProject + "/staon-csi/src/test/resources/";
 			final String targetWebPath = rootTargetProject + "/staon-web-pabr/src/main/webapp/";
 
 
@@ -48,16 +50,24 @@ public class GeneratorTest {
 
 			System.out.println("Generator EJB COMPONENTS OK");
 
-			GeneratorPaPdFiles generatorPaPd = new GeneratorPaPdFiles(
+			GeneratorPaFiles generatorPa = new GeneratorPaFiles(
 					sourcePath,
-					targetPaPdPath);
-			generatorPaPd.generate();
+					targetPaPath);
+			generatorPa.generate();
 
-			System.out.println("Generator PA PD CONFIGURATION OK");
+			System.out.println("Generator PA CONFIGURATION OK");
+
+
+			GeneratorPdFiles generatorPd = new GeneratorPdFiles(
+					sourcePath,
+					targetPdPath);
+			generatorPd.generate();
+
+			System.out.println("Generator PD CONFIGURATION OK");
 
 			GeneratorEjbConfFiles generatorEjbConfFiles = new GeneratorEjbConfFiles(
 					sourcePath,
-					targetPaPdPath);
+					targetPaPath);
 			generatorEjbConfFiles.generate();
 
 			System.out.println("Generator EJB JAR CONFIGURATION OK");
