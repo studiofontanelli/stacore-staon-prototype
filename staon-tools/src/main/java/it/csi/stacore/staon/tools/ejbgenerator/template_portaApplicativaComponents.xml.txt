@@ -1,14 +1,14 @@
-<porta-applicativa name="STAON_PA_${interfaceClass.simpleName}" public-interface-class="${interfaceClass.name}">
-  <listener
-    class="it.csi.csi.porte.ejb20.PortaApplicativaBean"
-    listening-url="java:${interfaceClass.simpleName}PA"/>
+<!--
+	@generated
+-->
 
-  <adapter  class="it.csi.csi.wrapper.StatelessEJBAdapter">
+<porta-applicativa name="STAON_PA_${interfaceClass.simpleName}" public-interface-class="${interfaceClass.name}">
+  <listener class="it.csi.csi.porte.ejb20.PortaApplicativaBean" listening-url="java:${ejbName}PA"/>
+  <adapter class="it.csi.csi.wrapper.StatelessEJBAdapter">
 	   <properties>
-	     <property name="jndi-name" value="sipreserv${env}/components/ejb/${interfaceClass.simpleName}"/>
-	     <property name="home-class" value="${interfaceClass.package.name}.ejb.${interfaceClass.simpleName}Home" />
-	     <property name="remote-class" value="${interfaceClass.package.name}.ejb.${interfaceClass.simpleName}Remote" />
+	     <property name="jndi-name"    value="java:app/staon-ejb/${ejbName}!${ejbPackage}.${ejbName}Home"/>
+	     <property name="home-class"   value="${ejbPackage}.${ejbName}Home" />
+	     <property name="remote-class" value="${ejbPackage}.${ejbName}" />
 	   </properties>
   </adapter>
-
 </porta-applicativa>

@@ -1,39 +1,78 @@
 package ${interfaceClass.package.name}.ejb;
 
-import javax.ejb.EJBHome;
-//import it.csi.sipred.sipreserv.components.common.ejb.GenericBusinessComponentListenerBean;
-//import it.csi.util.beanlocatorfactory.ServiceBeanLocator;
-
 import javax.ejb.CreateException;
+import java.rmi.RemoteException;
+import javax.ejb.CreateException;
+import it.csi.stacore.staon.exception.BusinessException;
+import it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface;
+import it.csi.stacore.staon.util.Tracer;
 
 
-public class ${interfaceClass.simpleName}Bean extends GenericBusinessComponentListenerBean   implements ${interfaceClass.name}{
+
+public class ${ejbName}Bean extends CommonServiceBean implements ${interfaceClass.name}{
 
 	private static final long serialVersionUID = 1L;
 
-    ${interfaceClass.name} helper=null;
+    private ${interfaceClass.name} service = null;
 
-
+	/**
+	 * @generated
+	 */
 	public void ejbCreate() throws CreateException {
-		//helper=(${interfaceClass.name})
-		//ServiceBeanLocator.getBeanByName("business.${interfaceClass.simpleName}");
+		String method = "ejbCreate";
+		Tracer.debug(LOG,  getClass().getName(), method, "BEGIN");
+		try {
+			super.ejbCreate();
+			if (beanFactoryReference.getFactory().containsBean("${interfaceClass.simpleName}")){
+				servizioConsultazioneInterface = (ServizioConsultazioneInterface) beanFactoryReference.getFactory().getBean("${interfaceClass.simpleName}");
+				Tracer.debug(LOG,  getClass().getName(), method, "found service ${interfaceClass.simpleName}");
+			}
+			else
+				throw new CreateException("No service ${interfaceClass.simpleName} found");
+
+		} catch (Exception e) {
+			Tracer.error(LOG,  getClass().getName(), method, "Exception " + e);
+			throw new CreateException(e.getMessage());
+		}
+		finally{
+			Tracer.debug(LOG,  getClass().getName(), method, "END");
+		}
 	}
+
+
 
 
 <#list interfaceClass.methods as currentMethod>
 
-	public ${currentMethod.returnType.canonicalName}  ${currentMethod.name}(
-
-	<#list currentMethod.parameterTypes as currentParam>
+	/**
+	 * @generated
+	 */
+	public ${currentMethod.returnType.canonicalName} ${currentMethod.name} (
+		<#list currentMethod.parameterTypes as currentParam>
 			${currentParam.canonicalName} par${currentParam_index + 1} <#if currentParam_has_next>,<#else>)</#if>
-    </#list>
-    )
+    	</#list>
+    	)
       <#list currentMethod.exceptionTypes as currentException>
           <#if (currentException_index == 0)> throws </#if>
             ${currentException.canonicalName} <#if currentException_has_next>,</#if>
       </#list>
-    {
-        	<#if currentMethod.returnType.name!='void'>return</#if>  helper.${currentMethod.name}(<#list currentMethod.parameterTypes as currentParam>par${currentParam_index + 1} <#if currentParam_has_next>,</#if></#list>);
+    	{
+    	try{
+        	<#if currentMethod.returnType.name!='void'>return</#if> service.${currentMethod.name}(<#list currentMethod.parameterTypes as currentParam>par${currentParam_index + 1} <#if currentParam_has_next>,</#if></#list>);
+		}
+		catch(BusinessException e) {
+			sessionContext.setRollbackOnly();
+			Tracer.error(LOG,  getClass().getName(), method, "BusinessException " + e);
+			throw new CSIException(e.getMessage());
+		}
+		catch(Exception e) {
+			sessionContext.setRollbackOnly();
+			Tracer.error(LOG,  getClass().getName(), method, "Exception " + e);
+			throw new CSIException(e.getMessage());
+		}
+		finally{
+
+		}
 	}
   </#list>
 

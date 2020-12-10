@@ -1,9 +1,7 @@
 package it.csi.stacore.staon.ejb;
 
 import java.rmi.RemoteException;
-
 import javax.ejb.CreateException;
-
 import it.csi.csi.wrapper.CSIException;
 import it.csi.stacore.staon.dto.RegioneDto;
 import it.csi.stacore.staon.exception.BusinessException;

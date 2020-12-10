@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -33,45 +35,18 @@ public abstract class AbstractGenerator {
 	 * di default disponibili per tutti i generatori il modello
 	 * specializzato per ogni generatore
 	 */
-	protected Map createModel(String modelKey,Object model)
-	{
+	protected Map createModel(String modelKey, Object model, String className, String simpleClassName) {
 		Map freeMarkerModel=new HashMap<String, Object>();
 		freeMarkerModel.put(modelKey, model);
-		//Determino se online, batch o orch
-		Boolean online=null;
-		Boolean batch=null;
-		Boolean orch=null;
-
-		online=Boolean.TRUE;
-		batch = Boolean.FALSE;
-		orch = Boolean.FALSE;
-
-		freeMarkerModel.put("online",online);
-		freeMarkerModel.put("batch", batch);
-		freeMarkerModel.put("orch", orch);
-
-		if (online.booleanValue()){
-			freeMarkerModel.put("env", "");
-			freeMarkerModel.put("envUpper", "");
-			freeMarkerModel.put("descrizioneAmbiente" ,"online");
-		}
-		else if (batch.booleanValue()){
-			freeMarkerModel.put("env", "btc");
-			freeMarkerModel.put("envUpper", "BTC");
-			freeMarkerModel.put("descrizioneAmbiente" ,"batch");
-		}
-		else if (orch.booleanValue()){
-			freeMarkerModel.put("env", "orch");
-			freeMarkerModel.put("envUpper", "ORCH");
-			freeMarkerModel.put("descrizioneAmbiente" ,"orch");
-		}
+		freeMarkerModel.put("ejbPackage" ,"it.csi.stacore.staon.ejb");
+		freeMarkerModel.put("ejbName" ,StringUtils.remove(simpleClassName, "Interface"));
+		freeMarkerModel.put("beanName" ,StringUtils.uncapitalize(StringUtils.remove(simpleClassName, "Interface")));
 		return freeMarkerModel;
 	}
 
 	public abstract void generate() throws Exception;
 
-	protected void generate(String templateName,Map rootModel,String outputFileName) throws Exception
-	{
+	protected void generate(String templateName, Map rootModel, String outputFileName) throws Exception {
 		Configuration cfg = new Configuration();
 		cfg.setClassForTemplateLoading(this.getClass(), "");
 		//cfg.setDirectoryForTemplateLoading(new File(baseTemplateDir));

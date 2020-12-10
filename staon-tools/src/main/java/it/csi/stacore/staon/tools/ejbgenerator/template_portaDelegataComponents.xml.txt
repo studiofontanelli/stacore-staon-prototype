@@ -1,9 +1,12 @@
+<!--
+	@generated
+-->
 <?xml version="1.0" encoding="UTF-8"?>
-<porta-delegata name="SIPRED${envUpper}_COMP_PD_${interfaceClass.simpleName}"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<porta-delegata name="STACORE_staon_${interfaceClass.simpleName}"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="pd.xsd">
 	<services>
-		<service name="SIPRED${envUpper}_COMP_PA_${interfaceClass.simpleName}"
+		<service name="STACORE_staon_${interfaceClass.simpleName}"
 			public-interface-class="${interfaceClass.name}">
 			<operations>
 		<#list interfaceClass.methods as currentMethod>
@@ -24,9 +27,11 @@
 	<config>
 		<url-pa></url-pa>
 		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
-			<pluggable-pd name="SIPRED${envUpper}_COMP_PA_${interfaceClass.simpleName}" class="it.csi.csi.porte.ejb20.PortaDelegataEJB" url-pa="sipreserv${env}/components/ejb/pa_${interfaceClass.simpleName}">
-				<properties>		
-					<property  name="java.naming.factory.initial" value="weblogic.jndi.WLInitialContextFactory"/>			
+			<pluggable-pd name="STACORE_staon_${interfaceClass.simpleName}"
+				class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
+				url-pa="@stacore.staon.pabr.server.prefix@/staonpabr/servlet/rpcrouter">
+				<properties>
+
 				</properties>
 			</pluggable-pd>
 		</pluggable-pd-list>
