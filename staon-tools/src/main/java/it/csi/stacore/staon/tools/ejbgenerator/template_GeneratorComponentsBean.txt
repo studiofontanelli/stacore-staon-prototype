@@ -1,19 +1,24 @@
-package ${interfaceClass.package.name}.ejb;
+<#assign ejbPackage="${interfaceClass.package.name}"?replace("interfacecsi", "ejb")>
+<#assign ejbName="${interfaceClass.simpleName}"?replace("Interface", "")>
+<#assign beanName="${ejbName}"?uncap_first>
 
+package ${ejbPackage};
+
+import it.csi.csi.wrapper.CSIException;
 import javax.ejb.CreateException;
 import java.rmi.RemoteException;
-import javax.ejb.CreateException;
 import it.csi.stacore.staon.exception.BusinessException;
-import it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface;
+import ${interfaceClass.name};
 import it.csi.stacore.staon.util.Tracer;
 
-
-
-public class ${ejbName}Bean extends CommonServiceBean implements ${interfaceClass.name}{
+/**
+ *  @generated
+*/
+public class ${ejbName}Bean extends CommonServiceBean implements ${interfaceClass.simpleName}{
 
 	private static final long serialVersionUID = 1L;
 
-    private ${interfaceClass.name} service = null;
+    private ${interfaceClass.simpleName} ${beanName} = null;
 
 	/**
 	 * @generated
@@ -23,12 +28,12 @@ public class ${ejbName}Bean extends CommonServiceBean implements ${interfaceClas
 		Tracer.debug(LOG,  getClass().getName(), method, "BEGIN");
 		try {
 			super.ejbCreate();
-			if (beanFactoryReference.getFactory().containsBean("${interfaceClass.simpleName}")){
-				servizioConsultazioneInterface = (ServizioConsultazioneInterface) beanFactoryReference.getFactory().getBean("${interfaceClass.simpleName}");
-				Tracer.debug(LOG,  getClass().getName(), method, "found service ${interfaceClass.simpleName}");
+			if (beanFactoryReference.getFactory().containsBean("${beanName}")){
+				${beanName} = (${interfaceClass.simpleName}) beanFactoryReference.getFactory().getBean("${beanName}");
+				Tracer.debug(LOG,  getClass().getName(), method, "found service ${beanName}");
 			}
 			else
-				throw new CreateException("No service ${interfaceClass.simpleName} found");
+				throw new CreateException("No service ${beanName} found");
 
 		} catch (Exception e) {
 			Tracer.error(LOG,  getClass().getName(), method, "Exception " + e);
@@ -38,10 +43,6 @@ public class ${ejbName}Bean extends CommonServiceBean implements ${interfaceClas
 			Tracer.debug(LOG,  getClass().getName(), method, "END");
 		}
 	}
-
-
-
-
 <#list interfaceClass.methods as currentMethod>
 
 	/**
@@ -57,8 +58,9 @@ public class ${ejbName}Bean extends CommonServiceBean implements ${interfaceClas
             ${currentException.canonicalName} <#if currentException_has_next>,</#if>
       </#list>
     	{
+    	final String method = "${currentMethod.name}";
     	try{
-        	<#if currentMethod.returnType.name!='void'>return</#if> service.${currentMethod.name}(<#list currentMethod.parameterTypes as currentParam>par${currentParam_index + 1} <#if currentParam_has_next>,</#if></#list>);
+        	<#if currentMethod.returnType.name!='void'>return</#if> ${beanName}.${currentMethod.name}(<#list currentMethod.parameterTypes as currentParam>par${currentParam_index + 1} <#if currentParam_has_next>,</#if></#list>);
 		}
 		catch(BusinessException e) {
 			sessionContext.setRollbackOnly();

@@ -1,11 +1,18 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<porta-delegata name="SIPRED_COMP_PD_ServizioConsultazione"
+<porta-delegata name="STACORE_staon_ServizioConsultazioneInterface"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="pd.xsd">
 	<services>
-		<service name="SIPRED_COMP_PA_ServizioConsultazione"
-			public-interface-class="ic.csi.stacore.staon.interfacecsi.ServizioConsultazione">
+		<service name="STACORE_staon_ServizioConsultazioneInterface"
+			public-interface-class="it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface">
 			<operations>
+				<operation name="testResources"
+					type="synch-call">
+					<param-list>
+					</param-list>
+					<ret-val type="boolean" />
+				</operation>
 				<operation name="findRegione"
 					type="synch-call">
 					<param-list>
@@ -18,9 +25,11 @@
 	<config>
 		<url-pa></url-pa>
 		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
-			<pluggable-pd name="SIPRED_COMP_PA_ServizioConsultazione" class="it.csi.csi.porte.ejb20.PortaDelegataEJB" url-pa="sipreserv/components/ejb/pa_ServizioConsultazione">
+			<pluggable-pd name="servizioConsultazione"
+				class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
+				url-pa="@stacore.staon.pabr.server.prefix@/staonpabr/servlet/rpcrouter">
 				<properties>
-					<property  name="java.naming.factory.initial" value="weblogic.jndi.WLInitialContextFactory"/>
+
 				</properties>
 			</pluggable-pd>
 		</pluggable-pd-list>

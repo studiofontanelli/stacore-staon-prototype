@@ -1,10 +1,20 @@
-package ${interfaceClass.package.name}.ejb;
+<#assign ejbPackage="${interfaceClass.package.name}"?replace("interfacecsi", "ejb")>
+<#assign ejbName="${interfaceClass.simpleName}"?replace("Interface", "")>
+
+
+package ${ejbPackage};
 
 import javax.ejb.EJBHome;
+import java.rmi.RemoteException;
+import javax.ejb.CreateException;
 
+/**
+ *  @generated
+*/
 public interface ${ejbName}Home extends EJBHome {
+
 	/**
 	 * @generated
 	 */
-	public ${ejbName}Remote create()throws javax.ejb.CreateException,java.rmi.RemoteException;
+	public ${ejbName} create()throws CreateException, RemoteException;
 }

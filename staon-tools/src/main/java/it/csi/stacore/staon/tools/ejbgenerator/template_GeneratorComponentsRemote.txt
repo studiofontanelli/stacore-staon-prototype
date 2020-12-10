@@ -1,15 +1,18 @@
-package ${interfaceClass.package.name}.ejb;
+<#assign ejbPackage="${interfaceClass.package.name}"?replace("interfacecsi", "ejb")>
+<#assign ejbName="${interfaceClass.simpleName}"?replace("Interface", "")>
 
+package ${ejbPackage};
+
+import javax.ejb.EJBObject;
 import java.rmi.RemoteException;
 
-public interface ${ejbName} extends javax.ejb.EJBObject{
+public interface ${ejbName} extends EJBObject{
 
 <#list interfaceClass.methods as currentMethod>
 
 	/**
 	 * @generated
 	 */
-
 	public ${currentMethod.returnType.canonicalName} ${currentMethod.name}(
 	<#list currentMethod.parameterTypes as currentParam>
 			${currentParam.canonicalName} par${currentParam_index + 1} <#if currentParam_has_next>,<#else>)</#if>

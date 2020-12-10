@@ -1,19 +1,26 @@
+
 package it.csi.stacore.staon.ejb;
 
+import javax.ejb.EJBObject;
 import java.rmi.RemoteException;
 
-import javax.ejb.EJBObject;
-
-import it.csi.stacore.staon.dto.RegioneDto;
+public interface ServizioConsultazione extends EJBObject{
 
 
-public interface ServizioConsultazione extends EJBObject {
+	/**
+	 * @generated
+	 */
+	public boolean testResources(
+       ) throws
+       	java.lang.Exception,
+      	RemoteException;
 
-
-	public boolean testResources() throws Exception, RemoteException;
-
-	public RegioneDto[] findRegione() throws Exception, RemoteException;
-
-
+	/**
+	 * @generated
+	 */
+	public it.csi.stacore.staon.dto.RegioneDto[] findRegione(
+       ) throws
+       	java.lang.Exception,
+      	RemoteException;
 
 }

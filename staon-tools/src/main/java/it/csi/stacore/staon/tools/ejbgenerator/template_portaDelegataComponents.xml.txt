@@ -1,6 +1,7 @@
-<!--
-	@generated
--->
+<#assign ejbPackage="${interfaceClass.package.name}"?replace("interfacecsi", "ejb")>
+<#assign ejbName="${interfaceClass.simpleName}"?replace("Interface", "")>
+<#assign beanName="${ejbName}"?uncap_first>
+
 <?xml version="1.0" encoding="UTF-8"?>
 <porta-delegata name="STACORE_staon_${interfaceClass.simpleName}"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -27,7 +28,7 @@
 	<config>
 		<url-pa></url-pa>
 		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
-			<pluggable-pd name="STACORE_staon_${interfaceClass.simpleName}"
+			<pluggable-pd name="${beanName}"
 				class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
 				url-pa="@stacore.staon.pabr.server.prefix@/staonpabr/servlet/rpcrouter">
 				<properties>

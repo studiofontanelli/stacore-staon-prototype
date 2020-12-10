@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<#assign ejbPackage="${interfaceClass.package.name}"?replace("interfacecsi", "ejb")>
+<#assign ejbName="${interfaceClass.simpleName}"?replace("Interface", "")>
+<#assign beanName="${ejbName}"?uncap_first>
+<isd:service xmlns:isd="http://xml.apache.org/xml-soap/deployment" id="urn:${beanName}">
+	<isd:provider type="it.csi.csi.porte.soap.apache.StatelessEJBProvider" scope="Application" methods="invokeSynch invokeAsynch">
+		<isd:option key="JNDIName" value="java:app/staon-ejb/${ejbName}PA!it.csi.csi.porte.ejb20.PortaApplicativaHome" />
+		<isd:option key="app.context.name" value="${beanName}" />
+	</isd:provider>
+	<isd:faultListener>org.apache.soap.server.ExceptionFaultListener</isd:faultListener>
+	<isd:mappings defaultRegistryClass="it.csi.csi.porte.soap.apache.GeneralizedMappingRegistry"></isd:mappings>
+</isd:service>
+

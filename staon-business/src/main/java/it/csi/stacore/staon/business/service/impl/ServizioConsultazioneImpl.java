@@ -13,7 +13,7 @@ import it.csi.stacore.staon.integration.service.ServiziDecodifica;
 import it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface;
 import it.csi.stacore.staon.util.Tracer;
 
-@Service("ServizioConsultazioneInterface")
+@Service("servizioConsultazione")
 public class ServizioConsultazioneImpl extends CommonServiceImpl implements ServizioConsultazioneInterface {
 
 

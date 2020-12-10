@@ -10,11 +10,14 @@
 		<servlet-name>autoinstaller</servlet-name>
 		<servlet-class>it.csi.csi.porte.soap.apache.AutoInstallerServlet</servlet-class>
 
-		<!-- CONFIGURAZIONE INTERFACCIA ServizioConsultazione -->
+<#list classlist as c>
+	<#assign ejbName="${c.simpleName}"?replace("Interface", "")>
+		<!-- CONFIGURAZIONE INTERFACCIA ${ejbName} -->
 		<init-param>
-			<param-name>servicedef-pabrServizioConsultazione</param-name>
-			<param-value>/WEB-INF/deploysoapejb-staonServizioConsultazione.xml</param-value>
+			<param-name>servicedef-pabr${ejbName}</param-name>
+			<param-value>/WEB-INF/deploysoapejb-staon${ejbName}.xml</param-value>
 		</init-param>
+</#list>
 
 		<load-on-startup>1000</load-on-startup>
 	</servlet>

@@ -1,6 +1,5 @@
-<!--
-	@generated
--->
+<#assign ejbPackage="${interfaceClass.package.name}"?replace("interfacecsi", "ejb")>
+<#assign ejbName="${interfaceClass.simpleName}"?replace("Interface", "")>
 
 <porta-applicativa name="STAON_PA_${interfaceClass.simpleName}" public-interface-class="${interfaceClass.name}">
   <listener class="it.csi.csi.porte.ejb20.PortaApplicativaBean" listening-url="java:${ejbName}PA"/>
