@@ -10,39 +10,26 @@ import it.csi.csi.util.xml.PDConfigReader;
 import it.csi.stacore.staon.dto.RegioneDto;
 import it.csi.stacore.staon.etc.Constants;
 import it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface;
+import it.csi.stacore.staon.test.JunitService;
 import it.csi.stacore.staon.util.Tracer;
 import it.csi.stacore.staon.util.XmlSerializer;
-import junit.framework.TestCase;
 
-public class ServizioConsultazioneTestCase extends TestCase {
+public class ServizioConsultazioneTestCase extends JunitService {
 
 
 	protected final static Logger LOG = LoggerFactory.getLogger(Constants.APPLICATION_NAME);
 
-	private InfoPortaDelegata infoPortaDelegata = null;
+	//private InfoPortaDelegata infoPortaDelegata = null;
 
 
 	private ServizioConsultazioneInterface service;
 
-	protected InfoPortaDelegata configuraPortaDelegata() throws Exception {
-		String method = "configuraPortaDelegata";
-
-		InfoPortaDelegata info = PDConfigReader.read("src/test/resources/pd/defPD_ServizioConsultazione.xml");
-		InfoPortaDelegata[] infoPortaDelegataArray =  info.getPlugins();
-		InfoPortaDelegata portaDelegata = infoPortaDelegataArray[0];
-
-
-		//Tracer.info(logger, getClass().getName(), method, "portaDelegata.getUrlPortaApplicativa()= " + portaDelegata.getUrlPortaApplicativa());
-
-		//String urlPortaApplicativa = StringUtils.replace(portaDelegata.getUrlPortaApplicativa(), URL_PA, urlPa);
-
-		//Tracer.info(logger, getClass().getName(), method, "urlPortaApplicativa= " + urlPortaApplicativa);
-
-		//portaDelegata.setUrlPortaApplicativa(urlPortaApplicativa);
-
-
-		return info;
+	@Override
+	public String getPdFile() {
+		return "src/test/resources/pd/defPD_ServizioConsultazione.xml";
 	}
+
+
 
 	/*
 	 * (non-Javadoc)
@@ -51,13 +38,8 @@ public class ServizioConsultazioneTestCase extends TestCase {
 	public void setUp() throws Exception {
 		final String method = "setUp";
 		try {
-			System.out.println("setUp");
-			//Log4jConfigurer.initLogging( "classpath:log4j.properties" );
-			//loadProperties();
-			infoPortaDelegata = configuraPortaDelegata();
-
+			super.setUp();
 			service = (ServizioConsultazioneInterface) PDProxy.newInstance(infoPortaDelegata);
-
 			Tracer.info(LOG, getClass().getName(), method, "service load correctly");
 			System.out.println("service load correctly");
 		}
@@ -65,8 +47,6 @@ public class ServizioConsultazioneTestCase extends TestCase {
 			Tracer.error(LOG, getClass().getName(), method, "Exception " + e);
 			throw e;
 		}
-
-
 	}
 
 
@@ -98,5 +78,7 @@ public class ServizioConsultazioneTestCase extends TestCase {
 			fail();
 		}
 	}
+
+
 
 }

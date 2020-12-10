@@ -44,14 +44,14 @@ public class ServizioConsultazioneBean extends CommonServiceBean implements Serv
 	/**
 	 * @generated
 	 */
-	public boolean testResources (
+	public it.csi.stacore.staon.dto.RegioneDto[] findRegione (
     	)
            throws 
             java.lang.Exception 
     	{
-    	final String method = "testResources";
+    	final String method = "findRegione";
     	try{
-        	return servizioConsultazione.testResources();
+        	return servizioConsultazione.findRegione();
 		}
 		catch(BusinessException e) {
 			sessionContext.setRollbackOnly();
@@ -71,14 +71,14 @@ public class ServizioConsultazioneBean extends CommonServiceBean implements Serv
 	/**
 	 * @generated
 	 */
-	public it.csi.stacore.staon.dto.RegioneDto[] findRegione (
+	public boolean testResources (
     	)
            throws 
             java.lang.Exception 
     	{
-    	final String method = "findRegione";
+    	final String method = "testResources";
     	try{
-        	return servizioConsultazione.findRegione();
+        	return servizioConsultazione.testResources();
 		}
 		catch(BusinessException e) {
 			sessionContext.setRollbackOnly();

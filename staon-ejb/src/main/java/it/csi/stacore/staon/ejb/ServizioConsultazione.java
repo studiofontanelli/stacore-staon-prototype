@@ -10,7 +10,7 @@ public interface ServizioConsultazione extends EJBObject{
 	/**
 	 * @generated
 	 */
-	public boolean testResources(
+	public it.csi.stacore.staon.dto.RegioneDto[] findRegione(
        ) throws
        	java.lang.Exception,
       	RemoteException;
@@ -18,7 +18,7 @@ public interface ServizioConsultazione extends EJBObject{
 	/**
 	 * @generated
 	 */
-	public it.csi.stacore.staon.dto.RegioneDto[] findRegione(
+	public boolean testResources(
        ) throws
        	java.lang.Exception,
       	RemoteException;

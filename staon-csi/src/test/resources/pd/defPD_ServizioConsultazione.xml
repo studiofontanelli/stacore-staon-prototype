@@ -6,17 +6,17 @@
 		<service name="STACORE_staon_ServizioConsultazioneInterface"
 			public-interface-class="it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface">
 			<operations>
-				<operation name="testResources"
-					type="synch-call">
-					<param-list>
-					</param-list>
-					<ret-val type="boolean" />
-				</operation>
 				<operation name="findRegione"
 					type="synch-call">
 					<param-list>
 					</param-list>
 					<ret-val type="it.csi.stacore.staon.dto.RegioneDto[]" />
+				</operation>
+				<operation name="testResources"
+					type="synch-call">
+					<param-list>
+					</param-list>
+					<ret-val type="boolean" />
 				</operation>
 			</operations>
 		</service>
@@ -26,7 +26,7 @@
 		<pluggable-pd-list chooser-class="it.csi.csi.porte.FixedDelegateChooser">
 			<pluggable-pd name="servizioConsultazione"
 				class="it.csi.csi.porte.soap.apache.PortaDelegataSoap"
-				url-pa="http://127.0.0.1:8080/staonpabr/servlet/rpcrouter">
+				url-pa="@stacore.staon.pabr.server.prefix@/staonpabr/servlet/rpcrouter">
 				<properties>
 
 				</properties>
@@ -35,4 +35,3 @@
 		<queue-manager url="" />
 	</config>
 </porta-delegata>
-

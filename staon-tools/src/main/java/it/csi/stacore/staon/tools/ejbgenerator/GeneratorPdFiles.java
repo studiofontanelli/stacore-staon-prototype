@@ -10,9 +10,9 @@ import it.csi.stacore.staon.interfacecsi.BusinessComponent;
 import it.csi.stacore.staon.tools.AbstractGenerator;
 import it.csi.stacore.staon.tools.ClassDiscovery;
 
-public class GeneratorPaPdFiles extends AbstractGenerator {
+public class GeneratorPdFiles extends AbstractGenerator {
 
-	public GeneratorPaPdFiles(String baseSourceDir, String baseOutputDir) {
+	public GeneratorPdFiles(String baseSourceDir, String baseOutputDir) {
 		super(baseSourceDir, baseOutputDir);
 	}
 
@@ -26,7 +26,7 @@ public class GeneratorPaPdFiles extends AbstractGenerator {
 		String destDir=args[1];
 
 		try {
-			new GeneratorPaPdFiles(sourceDir,destDir).generate();
+			new GeneratorPdFiles(sourceDir,destDir).generate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,10 +49,7 @@ public class GeneratorPaPdFiles extends AbstractGenerator {
 		Map<String, Object> model = createModel("interfaceClass",c);
 		String ejbName = StringUtils.remove(c.getSimpleName(), "Interface");
 
-		String outputFileNamePA="/META-INF/PAConfig/defPA_"+ejbName+".xml";
-		generate("template_portaApplicativaComponents.xml.txt",model, outputFileNamePA);
-
-		String outputFileNamePD="/META-INF/PAConfig/defPD_"+ejbName+".xml";
+		String outputFileNamePD="/pd/defPD_"+ejbName+".xml";
 		generate("template_portaDelegataComponents.xml.txt",model, outputFileNamePD);
 
 		///opt/java/projects/studiofontanelli/stacore-staon-prototype/staon-ejb/src/main/resources/META-INF/PAConfig/defPA_ServizioConsultazione.xml

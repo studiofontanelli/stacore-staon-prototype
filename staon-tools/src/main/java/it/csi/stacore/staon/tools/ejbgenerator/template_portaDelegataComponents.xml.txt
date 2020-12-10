@@ -1,8 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <#assign ejbPackage="${interfaceClass.package.name}"?replace("interfacecsi", "ejb")>
 <#assign ejbName="${interfaceClass.simpleName}"?replace("Interface", "")>
 <#assign beanName="${ejbName}"?uncap_first>
-
-<?xml version="1.0" encoding="UTF-8"?>
 <porta-delegata name="STACORE_staon_${interfaceClass.simpleName}"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="pd.xsd">
