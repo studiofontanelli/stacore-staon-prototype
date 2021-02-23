@@ -17,36 +17,42 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${springframework.version}</version>
+			
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>${springframework.version}</version>
+			
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 			<version>${springframework.version}</version>
+			
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
 			<version>${springframework.version}</version>
+			
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${springframework.version}</version>
+			
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
 			<version>${springframework.version}</version>
+			
 		</dependency>
 
 		<dependency>
@@ -61,14 +67,21 @@
 			<version>${ear.version}</version>
 			<type>war</type>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>staon-web-ws</artifactId>
+			<version>${ear.version}</version>
+			<type>war</type>
+		</dependency>
+		<!--  
 		<dependency>
 			<groupId>it.csi.stacore</groupId>
 			<artifactId>staon-ejb</artifactId>
 			<version>${ear.version}</version>
 			<type>ejb</type>
 		</dependency>
-
+		-->
 
 		<dependency>
 			<groupId>javax</groupId>
@@ -170,7 +183,6 @@
 
 	<build>
 		<plugins>
-
 			<!-- creazione ear -->
 			<plugin>
 				<artifactId>maven-ear-plugin</artifactId>
@@ -179,17 +191,29 @@
 					<finalName>${ear.name}</finalName>
 					<defaultLibBundleDir>/lib</defaultLibBundleDir>
 					<modules>
+						<!-- 
 						<ejbModule>
 							<groupId>it.csi.stacore</groupId>
 							<artifactId>staon-ejb</artifactId>
 							<bundleFileName>staon-ejb.jar</bundleFileName>
 						</ejbModule>
+						 -->
+						 
+						<!--  
 						<webModule>
 							<groupId>it.csi.stacore</groupId>
 							<artifactId>staon-web-pabr</artifactId>
 							<contextRoot>/staonpabr</contextRoot>
 							<bundleFileName>staon-web-parb.war</bundleFileName>
 						</webModule>
+						 -->
+						<webModule>
+							<groupId>it.csi.stacore</groupId>
+							<artifactId>staon-web-ws</artifactId>
+							<contextRoot>/staonws</contextRoot>
+							<bundleFileName>staon-web-ws.war</bundleFileName>
+						</webModule>
+						
 					</modules>
 					<!-- <configuration> -->
 					<!-- <packagingIncludes>META-INF/**,**/stawapp*.war</packagingIncludes> -->

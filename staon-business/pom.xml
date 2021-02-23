@@ -41,7 +41,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
 			<version>${springframework.version}</version>
-
 		</dependency>
 
 		<dependency>
@@ -101,5 +100,42 @@
 
 
 	</dependencies>
+	
+	<profiles>
+		<profile>
+			<id>macfonta</id>
+			<build>
+				<filters>
+					<filter>buildfiles/${property.file.name.source}</filter>
+				</filters>
+			</build>
+		</profile>
+	</profiles>
+	
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>Using ${property.file.name.source}</echo>
+								<copy file="buildfiles/${property.file.name.source}"
+									tofile="${project.build.outputDirectory}/environment.properties" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

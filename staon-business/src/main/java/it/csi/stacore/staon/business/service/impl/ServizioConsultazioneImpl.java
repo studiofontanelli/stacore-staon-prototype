@@ -11,6 +11,7 @@ import it.csi.stacore.staon.exception.BusinessException;
 import it.csi.stacore.staon.integration.exception.IntegrationException;
 import it.csi.stacore.staon.integration.service.ServiziDecodifica;
 import it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface;
+import it.csi.stacore.staon.util.Environment;
 import it.csi.stacore.staon.util.Tracer;
 
 @Service("servizioConsultazione")
@@ -21,12 +22,22 @@ public class ServizioConsultazioneImpl extends CommonServiceImpl implements Serv
 	private ServiziDecodifica serviziDecodifica;
 
 	@Autowired
-	RegioneDtoAdapter regioneDtoAdapter;
+	private RegioneDtoAdapter regioneDtoAdapter;
+	
+	@Autowired
+	private Environment environment;
 
 	@Override
 	public boolean testResources() throws Exception{
-		// TODO Auto-generated method stub
-		return true;
+		final String method = "testResources";
+		try {
+			Tracer.info(LOG,  getClass().getName(), method, "environment= " + environment.getEnvironment());
+			return true;
+		}
+		catch(Exception e) {
+			Tracer.error(LOG,  getClass().getName(), method, "IntegrationException " + e);
+			throw new BusinessException(e.getMessage(), e);
+		}
 	}
 
 	@Override

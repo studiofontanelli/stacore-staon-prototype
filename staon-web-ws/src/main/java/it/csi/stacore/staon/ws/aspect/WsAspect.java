@@ -1,4 +1,4 @@
-package it.csi.stacore.staon.business.aspect;
+package it.csi.stacore.staon.ws.aspect;
 
 
 import org.aspectj.lang.JoinPoint;
@@ -16,27 +16,27 @@ import it.csi.stacore.staon.util.XmlSerializer;
 import it.csi.stacore.staon.util.aspect.CommonAspect;
 
 
-@Component("serviceAspect")
+@Component("wsAspect")
 @Aspect
-public class ServiceAspect extends CommonAspect{
+public class WsAspect extends CommonAspect{
 
 	public static final String LOGGER_PREFIX = Constants.APPLICATION_NAME + ".aspect";
 
-	@Around(value = "execution(* it.csi.stacore.staon.business.service.impl..*.*(..))", argNames = "joinPoint")
+	@Around(value = "execution(* it.csi.stacore.staon.ws.impl..*.*(..))", argNames = "joinPoint")
 	public Object stopWatchMethod(ProceedingJoinPoint joinPoint) throws Throwable {
 		return super.stopWatchAspect(joinPoint);
 	}
 
-	@Before(value="execution(* it.csi.stacore.staon.business.service.impl..*.*(..))")
+	@Before(value="execution(* it.csi.stacore.staon.ws.impl..*.*(..))")
 	public void beforeAspect(JoinPoint joinPoint) throws Throwable {
 		super.beforeAspect(joinPoint);
 	}
 
-	@AfterThrowing (pointcut="execution(* it.csi.stacore.staon.business.service.impl..*.*(..))", throwing="ex" )
+	@AfterThrowing (pointcut="execution(* it.csi.stacore.staon.ws.impl..*.*(..))", throwing="ex" )
 	public void afterThrowingAspect(JoinPoint joinPoint, Exception ex) throws Throwable {
 		String className = joinPoint.getTarget().getClass().getName();
 		String method = joinPoint.getSignature().getName();
-		Tracer.error(LOG, className, method, "*** SERVICE BUSINESS TRACER ***");
+		Tracer.error(LOG, className, method, "*** WS TRACER ***");
 		Tracer.error(LOG, className, method, "Si e' verificato un errore: " + ex);
 		Tracer.info(LOG, className, method, "trace params:");
 		for(int i = 0; i<joinPoint.getArgs().length; i++ ) {

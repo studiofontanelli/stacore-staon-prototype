@@ -16,11 +16,6 @@
 
 
 
-	<!--
-	<bean id="applicationContextManager"
-		class="it.csi.util.beanlocatorfactory.SpringApplicationContextManager" />
-	 -->
-
 
 
 	 <!-- Business -->

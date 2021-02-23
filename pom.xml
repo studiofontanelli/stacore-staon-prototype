@@ -80,12 +80,24 @@
 		<log4j.version>1.2.17</log4j.version>
 		<soap.version>2.3.1</soap.version>
 		<xstream.version>1.2.2</xstream.version>
-		<springframework.version>4.1.3.RELEASE</springframework.version>
+		
+		
 		<commons-lang3.version>3.8.1</commons-lang3.version>
 		<ehcache.version>2.9.0</ehcache.version>
 
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<commons-pool.version>1.6.0.redhat-7</commons-pool.version>
+		
+		<!-- 3.2.7 -->
+		<!-- 2.7.14.redhat-1 -->
+		<cxf.version>3.2.7</cxf.version>
+		<!-- 
+		spring version:
+			4.1.3.RELEASE
+			3.1.1.RELEASE
+		 -->
+		<springframework.version>4.1.3.RELEASE</springframework.version>
+		
 
 
 	</properties>
@@ -94,16 +106,20 @@
 		<module>staon-dto</module>
 		<module>staon-util</module>
 		<module>staon-integration</module>
+		 
 		<module>staon-csi</module>
+		 
 		<module>staon-business</module>
+		<!-- 
 		<module>staon-ejb</module>
+		 -->
+		<!--  
 		<module>staon-web-pabr</module>
+		-->
+		<module>staon-web-ws</module>
 		<module>staon-ear</module>
 		<module>staon-tar</module>
 		<module>staon-tools</module>
-
-
-
 	</modules>
 
 

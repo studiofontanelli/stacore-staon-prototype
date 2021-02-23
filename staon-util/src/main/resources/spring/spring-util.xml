@@ -8,9 +8,15 @@
 
 
 	<context:component-scan base-package="it.csi.stacore.staon.util" />
+	
+	
+	<bean id="applicationContextManager" 
+		class="it.csi.stacore.staon.util.ApplicationContextManager" lazy-init="false" />
+	
 
 	<!-- Process annotations on registered beans like @Autowired... -->
 	<context:annotation-config />
+	
 
 	<!-- Dozer -->
 	<bean id="mapper" class="org.dozer.DozerBeanMapper">

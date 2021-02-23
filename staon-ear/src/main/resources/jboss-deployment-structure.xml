@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<jboss-deployment-structure
+	xmlns="urn:jboss:deployment-structure:1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<deployment>
+		<exclusions>
+			<module name="org.springframework" />
+		</exclusions>
+		<exclude-subsystems>
+			<subsystem name="resteasy" />
+			<subsystem name="jaxrs" />
+			<subsystem name="webservices" />
+		</exclude-subsystems>
+		<dependencies>
+			<module name="org.apache.cxf" />
+			<module name="org.apache.cxf.impl" />
+			<module name="javax.wsdl4j.api" />
+			<module name="org.apache.ws.xmlschema" />
+			<module name="org.apache.neethi" />
+			<module name="org.codehaus.woodstox" />
+		</dependencies>
+	</deployment>
+
+
+	<sub-deployment name="staon-web-ws.war">
+		<local-last value="false" />
+		
+		<exclusions>
+			<module name="org.springframework" />
+		</exclusions>
+		
+		<exclude-subsystems>
+			<subsystem name="jaxrs" />
+			<subsystem name="org.apache.cxf" />
+			<subsystem name="webservices" />
+		</exclude-subsystems>
+
+		<dependencies>
+			<module name="org.apache.cxf" />
+			<module name="org.apache.cxf.impl" />
+			<module name="javax.wsdl4j.api" />
+			<module name="org.apache.ws.xmlschema" />
+			<module name="org.apache.neethi" />
+			<module name="org.codehaus.woodstox" />
+			<module name="javaee.api" />
+			<module name="javaee.api">
+				<imports>
+					<exclude-set>
+						<path name="javax/ws/rs" />
+						<path name="javax/ws/rs/core" />
+						<path name="javax/ws/rs/ext" />
+					</exclude-set>
+				</imports>
+			</module>
+			<module name="asm.asm" />
+		</dependencies>
+
+	</sub-deployment>
+</jboss-deployment-structure>

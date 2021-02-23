@@ -27,7 +27,7 @@ public class ServiceAspect extends CommonAspect{
 		return super.stopWatchAspect(joinPoint);
 	}
 
-	@Before(value="execution(* it.csi.stacore.staon.business.service.impl..*.*(..))")
+	@Before(value="execution(* it.csi.fpcommon.fpsend.business.helper.impl..*.*(..))")
 	public void beforeAspect(JoinPoint joinPoint) throws Throwable {
 		super.beforeAspect(joinPoint);
 	}

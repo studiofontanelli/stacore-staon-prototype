@@ -27,7 +27,8 @@ public class RegioneAdapterImpl extends AbstractDtoAdapter <Regione, RegioneDto>
 	public ApplicationContext getApplicationContext() {
 		return applicationContext;
 	}
-
+	
+	
 	@Override
 	public RegioneDto convertTo(Regione t) throws DtoConversionException {
 		RegioneDto dto =  super.convertTo(t);
