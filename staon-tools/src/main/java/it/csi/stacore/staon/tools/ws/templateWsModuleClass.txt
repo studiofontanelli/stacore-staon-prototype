@@ -38,13 +38,14 @@ public class ${className} implements ${interface} {
 	/**
 	 * @generated
 	 */
+	
+	
 	public ${currentMethod.returnType.canonicalName} ${currentMethod.name} (
 		<#list currentMethod.parameterTypes as currentParam>
-			${currentParam.canonicalName} par${currentParam_index + 1} <#if currentParam_has_next>,<#else>)</#if>
+			${currentParam.canonicalName} par${currentParam_index + 1} <#if currentParam_has_next>,<#else></#if>
     	</#list>
-    	)
       <#list currentMethod.exceptionTypes as currentException>
-          <#if (currentException_index == 0)> throws </#if>
+          <#if (currentException_index == 0)> )throws </#if>
             ${currentException.canonicalName} <#if currentException_has_next>,</#if>
       </#list>
     	{
@@ -64,6 +65,19 @@ public class ${className} implements ${interface} {
 
 		}
 	}
+
+	
+	
+	
+	
+	
   </#list>
 
 }
+
+
+
+
+
+
+

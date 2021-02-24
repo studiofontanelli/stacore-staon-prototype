@@ -32,9 +32,10 @@ public class ServizioConsultazioneWsImpl implements ServizioConsultazioneWs {
 	/**
 	 * @generated
 	 */
+	
+	
 	public boolean testResources (
-    	)
-           throws 
+           )throws 
             java.lang.Exception 
     	{
     	final String method = "testResources";
@@ -53,12 +54,19 @@ public class ServizioConsultazioneWsImpl implements ServizioConsultazioneWs {
 
 		}
 	}
+
+	
+	
+	
+	
+	
 	/**
 	 * @generated
 	 */
+	
+	
 	public it.csi.stacore.staon.dto.RegioneDto[] findRegione (
-    	)
-           throws 
+           )throws 
             java.lang.Exception 
     	{
     	final String method = "findRegione";
@@ -78,4 +86,49 @@ public class ServizioConsultazioneWsImpl implements ServizioConsultazioneWs {
 		}
 	}
 
+	
+	
+	
+	
+	
+	/**
+	 * @generated
+	 */
+	
+	
+	public it.csi.stacore.staon.dto.RegioneDto findRegioneByCodice (
+			java.lang.String par1 
+           )throws 
+            java.lang.Exception 
+    	{
+    	final String method = "findRegioneByCodice";
+    	try{
+        	return servizioConsultazioneWsImpl.findRegioneByCodice(par1 );
+		}
+		catch(BusinessException e) {
+			Tracer.error(LOG,  getClass().getName(), method, "BusinessException " + e);
+			throw new Exception(e.getMessage());
+		}
+		catch(Exception e) {
+			Tracer.error(LOG,  getClass().getName(), method, "Exception " + e);
+			throw new Exception(e.getMessage());
+		}
+		finally{
+
+		}
+	}
+
+	
+	
+	
+	
+	
+
 }
+
+
+
+
+
+
+
