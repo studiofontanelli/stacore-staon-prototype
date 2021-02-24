@@ -1,4 +1,4 @@
-package it.csi.stacore.staon.tools.ws;
+package it.csi.stacore.staon.tools.business;
 
 
 
@@ -10,9 +10,9 @@ import it.csi.stacore.staon.interfacecsi.BusinessComponent;
 import it.csi.stacore.staon.tools.AbstractGenerator;
 import it.csi.stacore.staon.tools.ClassDiscovery;
 
-public class GeneratorWsModule extends AbstractGenerator {
+public class GeneratorBusinessModule extends AbstractGenerator {
 
-	public GeneratorWsModule(String baseSourceDir, String baseOutputDir) {
+	public GeneratorBusinessModule(String baseSourceDir, String baseOutputDir) {
 		super(baseSourceDir, baseOutputDir);
 	}
 
@@ -26,7 +26,7 @@ public class GeneratorWsModule extends AbstractGenerator {
 		String destDir=args[1];
 
 		try {
-			new GeneratorWsModule(sourceDir,destDir).generate();
+			new GeneratorBusinessModule(sourceDir,destDir).generate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,16 +49,10 @@ public class GeneratorWsModule extends AbstractGenerator {
 
 		//Genero il bean
 		Map<String, Object> model = createModel("services",c);
+		String outputFileNameSpring="/src/main/resources/spring/spring-business.xml";
+		generate("templateBusinessModuleSpring.txt",model, outputFileNameSpring);
 		
-		//String wsName = StringUtils.remove(c.getSimpleName(), "Interface");
-		//String wsPackage = StringUtils.replace(c.getPackage().getName(), "interfacecsi", "ws").replace(".", "/");
-
-		//System.out.println("wsPackage= "+wsPackage);
-
-		String outputFileNameSpring="/src/main/resources/spring/spring-web-ws.xml";
-
-		generate("templateWsModuleSpring.txt",model, outputFileNameSpring);
-
+		
 	}
 	
 	private void generateService(Class c) throws Exception {
@@ -66,22 +60,13 @@ public class GeneratorWsModule extends AbstractGenerator {
 		//Genero il bean
 		Map<String, Object> model = createModel("interfaceClass",c);
 		
-		String wsName = StringUtils.remove(c.getSimpleName(), "Interface");
-		String wsPackage = StringUtils.replace(c.getPackage().getName(), "interfacecsi", "ws").replace(".", "/");
+		String businessName = StringUtils.remove(c.getSimpleName(), "Interface");
+		String businessPackage = StringUtils.replace(c.getPackage().getName(), "interfacecsi", "business").replace(".", "/");
 
-
-		System.out.println("wsPackage= "+wsPackage);
-
-		String outputFileNameInterface="/src/main/java/"+wsPackage+"/"+wsName+"Ws.java";
-		String outputFileNameClass="/src/main/java/"+wsPackage+"/impl/"+wsName+"WsImpl.java";
-		
-
+		System.out.println("businessPackage= "+businessPackage);
+		String outputFileNameInterface="/src/main/java/"+businessPackage+"/"+businessName+".java";
 		System.out.println("outputFileNameInterface= "+outputFileNameInterface);
-		System.out.println("outputFileNameClass= "+outputFileNameClass);
-
-		generate("templateWsModuleInterface.txt",model, outputFileNameInterface);
-		generate("templateWsModuleClass.txt",model, outputFileNameClass);
-		
+		generate("templateBusinessModuleInterface.txt",model, outputFileNameInterface);
 	
 	}
 }

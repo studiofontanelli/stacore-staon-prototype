@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.csi.stacore.staon.business.ServizioConsultazione;
 import it.csi.stacore.staon.business.adapter.RegioneDtoAdapter;
 import it.csi.stacore.staon.dto.RegioneDto;
 import it.csi.stacore.staon.exception.BusinessException;
 import it.csi.stacore.staon.integration.exception.IntegrationException;
 import it.csi.stacore.staon.integration.service.ServiziDecodifica;
-import it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface;
 import it.csi.stacore.staon.util.Environment;
 import it.csi.stacore.staon.util.Tracer;
 
 @Service("servizioConsultazione")
-public class ServizioConsultazioneImpl extends CommonServiceImpl implements ServizioConsultazioneInterface {
+public class ServizioConsultazioneImpl extends CommonServiceImpl implements ServizioConsultazione {
 
 
 	@Autowired

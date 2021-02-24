@@ -106,9 +106,7 @@
 		<module>staon-dto</module>
 		<module>staon-util</module>
 		<module>staon-integration</module>
-		 
 		<module>staon-csi</module>
-		 
 		<module>staon-business</module>
 		<!-- 
 		<module>staon-ejb</module>
