@@ -16,30 +16,30 @@ import it.csi.stacore.staon.etc.Constants;
 /**
  *  @generated
  package=  it.csi.stacore.staon.ws.impl
- beanName= servizioConsultazioneWs
+ beanName= servizioConsultazioneWsImpl
  className= ServizioConsultazioneWsImpl
  interface= ServizioConsultazioneWs
 */
 @WebService(endpointInterface = "it.csi.stacore.staon.ws.ServizioConsultazioneWs")
-@Component("servizioConsultazioneWs")
+@Component("servizioConsultazioneWsImpl")
 public class ServizioConsultazioneWsImpl implements ServizioConsultazioneWs {
 
 	protected final static Logger LOG = LoggerFactory.getLogger(Constants.APPLICATION_NAME);
 	
 	@Autowired
-	private it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface servizioConsultazioneWs;
+	private it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface servizioConsultazioneWsImpl;
 
 	/**
 	 * @generated
 	 */
-	public it.csi.stacore.staon.dto.RegioneDto[] findRegione (
+	public boolean testResources (
     	)
            throws 
             java.lang.Exception 
     	{
-    	final String method = "findRegione";
+    	final String method = "testResources";
     	try{
-        	return servizioConsultazioneWs.findRegione();
+        	return servizioConsultazioneWsImpl.testResources();
 		}
 		catch(BusinessException e) {
 			Tracer.error(LOG,  getClass().getName(), method, "BusinessException " + e);
@@ -56,14 +56,14 @@ public class ServizioConsultazioneWsImpl implements ServizioConsultazioneWs {
 	/**
 	 * @generated
 	 */
-	public boolean testResources (
+	public it.csi.stacore.staon.dto.RegioneDto[] findRegione (
     	)
            throws 
             java.lang.Exception 
     	{
-    	final String method = "testResources";
+    	final String method = "findRegione";
     	try{
-        	return servizioConsultazioneWs.testResources();
+        	return servizioConsultazioneWsImpl.findRegione();
 		}
 		catch(BusinessException e) {
 			Tracer.error(LOG,  getClass().getName(), method, "BusinessException " + e);

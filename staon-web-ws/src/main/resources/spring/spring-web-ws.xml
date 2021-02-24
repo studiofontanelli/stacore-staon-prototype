@@ -27,7 +27,7 @@
 	
 		<!-- ServizioConsultazione -->
 	<jaxws:endpoint id="servizioConsultazioneWs"
-		implementor="#servizioConsultazioneWs"
+		implementor="#servizioConsultazioneWsImpl"
 		address="/staonServizioConsultazione">
 	</jaxws:endpoint>
 		

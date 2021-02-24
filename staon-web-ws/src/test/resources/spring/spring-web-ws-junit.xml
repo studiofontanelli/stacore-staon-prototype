@@ -14,11 +14,11 @@
 
 
 
-	<bean id="servizioConsultazione" class="it.csi.stacore.staon.ws.ServizioConsultazione"
+	<bean id="servizioConsultazione" class="it.csi.stacore.staon.ws.ServizioConsultazioneWs"
 		factory-bean="servizioConsultazioneCxfFactory" factory-method="create" />
 		
 	<bean id="servizioConsultazioneCxfFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
-		<property name="serviceClass" value="it.csi.stacore.staon.ws.ServizioConsultazione" />
+		<property name="serviceClass" value="it.csi.stacore.staon.ws.ServizioConsultazioneWs" />
 		
 		<!--  --> 
 		<property name="address" value="http://127.0.0.1:8080/staonws/services/staonServizioConsultazione" />

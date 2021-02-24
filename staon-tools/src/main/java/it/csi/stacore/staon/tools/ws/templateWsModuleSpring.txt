@@ -28,7 +28,7 @@
 	<#list services as service>
 		<#assign name="${service.simpleName}"?replace("Interface", "")>
 		<#assign id="${name}Ws"?uncap_first>
-		<#assign implementor="${name}Ws"?uncap_first>
+		<#assign implementor="${name}WsImpl"?uncap_first>
 		<#assign address="/staon${name}"?uncap_first>
 	<!-- ${name} -->
 	<jaxws:endpoint id="${id}"

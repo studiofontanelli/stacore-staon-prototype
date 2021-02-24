@@ -3,6 +3,7 @@ package it.csi.stacore.staon.business.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import it.csi.stacore.staon.business.adapter.RegioneDtoAdapter;
@@ -14,7 +15,7 @@ import it.csi.stacore.staon.interfacecsi.ServizioConsultazioneInterface;
 import it.csi.stacore.staon.util.Environment;
 import it.csi.stacore.staon.util.Tracer;
 
-@Service("servizioConsultazione")
+@Component("servizioConsultazione")
 public class ServizioConsultazioneImpl extends CommonServiceImpl implements ServizioConsultazioneInterface {
 
 

@@ -16,7 +16,7 @@ import it.csi.stacore.staon.dto.RegioneDto;
 import it.csi.stacore.staon.etc.Constants;
 import it.csi.stacore.staon.util.Tracer;
 import it.csi.stacore.staon.util.XmlSerializer;
-import it.csi.stacore.staon.ws.ServizioConsultazione;
+import it.csi.stacore.staon.ws.ServizioConsultazioneWs;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/spring/spring-web-ws-junit.xml")
@@ -25,7 +25,7 @@ public class ServizioConsultazioneTestCase {
 	protected final Logger LOG = LoggerFactory.getLogger(Constants.APPLICATION_NAME);
 	
 	@Autowired
-	private ServizioConsultazione servizioConsultazione;
+	private ServizioConsultazioneWs servizioConsultazione;
 	
 	@Test
 	public final void testResources() throws Exception{

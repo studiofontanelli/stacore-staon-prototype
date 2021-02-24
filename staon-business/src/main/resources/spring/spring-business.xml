@@ -21,9 +21,6 @@
 	 <!-- SERVICE -->
 	<context:component-scan base-package="it.csi.stacore.staon.business.*" />
 	
-
-
-
 	<!-- Process annotations on registered beans like @Autowired... -->
 	<context:annotation-config />
 

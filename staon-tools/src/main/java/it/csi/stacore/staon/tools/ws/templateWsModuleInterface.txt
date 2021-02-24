@@ -2,7 +2,7 @@
 <#assign name="${interfaceClass.simpleName}"?replace("Interface", "")>
 <#assign beanName="${name}"?uncap_first>
 <#assign interfaceName="${name}Ws">
-<#assign componenteName="${name}Ws"?uncap_first>
+<#assign componenteName="${interfaceName}"?uncap_first>
 
 package ${package};
 

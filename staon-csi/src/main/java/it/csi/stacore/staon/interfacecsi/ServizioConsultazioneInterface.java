@@ -5,7 +5,6 @@ import it.csi.stacore.staon.dto.RegioneDto;
 public interface ServizioConsultazioneInterface extends BusinessComponent  {
 
 
-
 	boolean testResources() throws Exception;
 
 	

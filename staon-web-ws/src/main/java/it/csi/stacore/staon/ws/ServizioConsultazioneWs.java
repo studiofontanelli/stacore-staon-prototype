@@ -17,7 +17,7 @@ public interface ServizioConsultazioneWs {
 	 */
 	@WebResult(name = "result")
 	@WebMethod 
-	public it.csi.stacore.staon.dto.RegioneDto[] findRegione (
+	public boolean testResources (
     	)
            throws 
             java.lang.Exception 
@@ -29,7 +29,7 @@ public interface ServizioConsultazioneWs {
 	 */
 	@WebResult(name = "result")
 	@WebMethod 
-	public boolean testResources (
+	public it.csi.stacore.staon.dto.RegioneDto[] findRegione (
     	)
            throws 
             java.lang.Exception 

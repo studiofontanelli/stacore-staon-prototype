@@ -1,8 +1,8 @@
 <#assign package="${interfaceClass.package.name}.impl"?replace("interfacecsi", "ws")>
 <#assign packageInterface="${interfaceClass.package.name}"?replace("interfacecsi", "ws")>
 <#assign interface="${interfaceClass.simpleName}Ws"?replace("Interface", "")>
-<#assign beanName="${interface}"?uncap_first>
 <#assign className="${interface}Impl">
+<#assign beanName="${className}"?uncap_first>
 
 package ${package};
 import javax.jws.WebService;
