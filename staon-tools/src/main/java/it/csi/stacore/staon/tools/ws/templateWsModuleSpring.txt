@@ -25,10 +25,16 @@
 	<aop:aspectj-autoproxy />
 	<aop:config proxy-target-class="true"/>
 	
-		<!-- ServizioConsultazione -->
-	<jaxws:endpoint id="servizioConsultazioneWs"
-		implementor="#servizioConsultazioneWs"
-		address="/staonServizioConsultazione">
+	<#list services as service>
+		<#assign name="${service.simpleName}"?replace("Interface", "")>
+		<#assign id="${name}Ws"?uncap_first>
+		<#assign implementor="${name}Ws"?uncap_first>
+		<#assign address="/staon${name}"?uncap_first>
+	<!-- ${name} -->
+	<jaxws:endpoint id="${id}"
+		implementor="#${implementor}"
+		address="${address}">
 	</jaxws:endpoint>
 		
+	</#list>
 </beans>

@@ -12,6 +12,7 @@ import it.csi.stacore.staon.tools.ejbgenerator.GeneratorPaBrFiles;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorPaFiles;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorPdFiles;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorSoapEjbFiles;
+import it.csi.stacore.staon.tools.ws.GeneratorWsModule;
 
 
 
@@ -31,6 +32,9 @@ public class GeneratorTest {
 			final String targetWebPath = "/opt/java/tmp/projects/studiofontanelli/stacore-staon-prototype/staon-web-pabr/src/main/webapp/";
 			*/
 
+			//final String rootSrcProject = "/opt/java/projects/studiofontanelli/stacore-staon-prototype";
+			//final String rootTargetProject = "/opt/java/projects/studiofontanelli/stacore-staon-prototype";
+			
 			final String rootSrcProject = "/opt/java/projects/studiofontanelli/stacore-staon-prototype";
 			final String rootTargetProject = "/opt/java/projects/studiofontanelli/stacore-staon-prototype";
 
@@ -40,8 +44,11 @@ public class GeneratorTest {
 			final String targetPaPath = rootTargetProject + "/staon-ejb/src/main/resources/";
 			final String targetPdPath = rootTargetProject + "/staon-csi/src/test/resources/";
 			final String targetWebPath = rootTargetProject + "/staon-web-pabr/src/main/webapp/";
+			
+			
+			final String targetWsModulePath = rootTargetProject + "/staon-web-ws";
 
-
+			/*
 			GeneratorComponentsBeans g=new GeneratorComponentsBeans(
 					sourcePath,
 					targetEjbPath);
@@ -87,7 +94,13 @@ public class GeneratorTest {
 			generatorSoapEjbFiles.generate();
 
 			System.out.println("Generator SOAP EJB WEB CONFIGURATION OK");
-
+			*/
+			
+			
+			GeneratorWsModule generatorWsModule = new GeneratorWsModule(
+					sourcePath,
+					targetWsModulePath);
+			generatorWsModule.generate();
 
 			boolean result = true;
 

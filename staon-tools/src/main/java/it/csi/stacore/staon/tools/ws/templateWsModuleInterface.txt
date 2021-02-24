@@ -1,0 +1,38 @@
+<#assign package="${interfaceClass.package.name}"?replace("interfacecsi", "ws")>
+<#assign name="${interfaceClass.simpleName}"?replace("Interface", "")>
+<#assign beanName="${name}"?uncap_first>
+<#assign interfaceName="${name}Ws">
+<#assign componenteName="${name}Ws"?uncap_first>
+
+package ${package};
+
+
+import javax.jws.WebMethod;
+import javax.jws.WebResult;
+import javax.jws.WebService;
+
+/**
+ *  @generated
+*/
+@WebService(name = "${componenteName}")
+public interface ${interfaceName} {
+<#list interfaceClass.methods as currentMethod>
+	
+	/**
+	 * @generated
+	 */
+	@WebResult(name = "result")
+	@WebMethod 
+	public ${currentMethod.returnType.canonicalName} ${currentMethod.name} (
+		<#list currentMethod.parameterTypes as currentParam>
+			${currentParam.canonicalName} par${currentParam_index + 1} <#if currentParam_has_next>,<#else>)</#if>
+    	</#list>
+    	)
+      <#list currentMethod.exceptionTypes as currentException>
+          <#if (currentException_index == 0)> throws </#if>
+            ${currentException.canonicalName} 
+            <#if currentException_has_next>,</#if>
+      </#list>;
+  </#list>
+
+}
