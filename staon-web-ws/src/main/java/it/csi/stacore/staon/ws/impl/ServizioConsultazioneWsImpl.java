@@ -34,13 +34,14 @@ public class ServizioConsultazioneWsImpl implements ServizioConsultazioneWs {
 	 */
 	
 	
-	public boolean testResources (
+	public it.csi.stacore.staon.dto.RegioneDto findRegioneByCodice (
+			java.lang.String par1 
            )throws 
             java.lang.Exception 
     	{
-    	final String method = "testResources";
+    	final String method = "findRegioneByCodice";
     	try{
-        	return servizioConsultazioneWsImpl.testResources();
+        	return servizioConsultazioneWsImpl.findRegioneByCodice(par1 );
 		}
 		catch(BusinessException e) {
 			Tracer.error(LOG,  getClass().getName(), method, "BusinessException " + e);
@@ -96,14 +97,13 @@ public class ServizioConsultazioneWsImpl implements ServizioConsultazioneWs {
 	 */
 	
 	
-	public it.csi.stacore.staon.dto.RegioneDto findRegioneByCodice (
-			java.lang.String par1 
+	public boolean testResources (
            )throws 
             java.lang.Exception 
     	{
-    	final String method = "findRegioneByCodice";
+    	final String method = "testResources";
     	try{
-        	return servizioConsultazioneWsImpl.findRegioneByCodice(par1 );
+        	return servizioConsultazioneWsImpl.testResources();
 		}
 		catch(BusinessException e) {
 			Tracer.error(LOG,  getClass().getName(), method, "BusinessException " + e);

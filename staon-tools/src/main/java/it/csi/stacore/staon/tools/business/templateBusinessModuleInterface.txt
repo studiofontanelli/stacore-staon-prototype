@@ -1,0 +1,26 @@
+<#assign package="${interfaceClass.package.name}"?replace("interfacecsi", "business")>
+<#assign name="${interfaceClass.simpleName}"?replace("Interface", "")>
+<#assign interfaceName="${name}">
+
+package ${package};
+
+import ${interfaceClass.package.name}.${interfaceClass.simpleName};
+
+
+/**
+ *  @generated
+ 
+ interfaceClass.package.name = ${interfaceClass.package.name}
+ interfaceClass.simpleName   = ${interfaceClass.simpleName}
+ 
+*/
+public interface ${interfaceName} extends ${interfaceClass.simpleName} {
+
+
+}
+
+
+
+
+
+

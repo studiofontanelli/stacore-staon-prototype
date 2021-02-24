@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import it.csi.stacore.staon.tools.business.GeneratorBusinessModule;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorComponentsBeans;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorEjbConfFiles;
 import it.csi.stacore.staon.tools.ejbgenerator.GeneratorPaBrFiles;
@@ -44,6 +45,8 @@ public class GeneratorTest {
 			final String targetPaPath = rootTargetProject + "/staon-ejb/src/main/resources/";
 			final String targetPdPath = rootTargetProject + "/staon-csi/src/test/resources/";
 			final String targetWebPath = rootTargetProject + "/staon-web-pabr/src/main/webapp/";
+			
+			final String targetBusinessPath = rootTargetProject + "/staon-business";
 			
 			
 			final String targetWsModulePath = rootTargetProject + "/staon-web-ws";
@@ -100,7 +103,13 @@ public class GeneratorTest {
 			GeneratorWsModule generatorWsModule = new GeneratorWsModule(
 					sourcePath,
 					targetWsModulePath);
+			
 			generatorWsModule.generate();
+			
+			GeneratorBusinessModule generatorBusinessModule = new GeneratorBusinessModule(
+					sourcePath,
+					targetBusinessPath);
+			generatorBusinessModule.generate();
 
 			boolean result = true;
 
